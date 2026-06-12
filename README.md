@@ -1,6 +1,7 @@
 # Spectral rigidity verification
 
 [![verify](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml/badge.svg)](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml)
+[![executed notebook](https://img.shields.io/badge/notebook-view%20executed-2ea44f)](https://kootru-repo.github.io/gap-protected-spectral-invariants/)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kootru-repo/gap-protected-spectral-invariants/blob/main/reproduce.ipynb)
 
 Reproducible verification code for the paper *Gap-protected spectral
@@ -14,7 +15,18 @@ the verified results: the mode count `N_4(5) = 137 = 1 + 8 + 128`, the
 spectral radius `rho < 7.2e-3`, the Born interval `[137.03596, 137.03607]`,
 and the smooth spectral action `137.036015074`.
 
-## Run it in the browser
+## See it without running anything
+
+The **view executed** badge above opens the notebook *already run* on
+GitHub's servers:
+[kootru-repo.github.io/gap-protected-spectral-invariants](https://kootru-repo.github.io/gap-protected-spectral-invariants/).
+Every headline number appears beside the value printed in the paper, with
+its equation or theorem number and an `OK` match. GitHub Actions re-executes
+the notebook on each commit and republishes it, and the page only updates
+when all checks pass -- so what you read there is a live, machine-run result,
+not a saved screenshot. No login, no launch, nothing on your machine.
+
+## Run it yourself in the browser
 
 Click **Open in Colab** above. It opens `reproduce.ipynb`; choose
 *Runtime -> Run all*. The notebook clones this repository, installs the
@@ -24,8 +36,10 @@ next to it -- and then runs the full suite. No local install.
 
 ## For reviewers
 
-- One click, no setup: the **Open in Colab** badge runs `reproduce.ipynb`
-  end to end in the browser.
+- Read-only, zero setup: the **view executed** badge shows the notebook
+  already run on GitHub's servers.
+- Re-run it yourself, no install: the **Open in Colab** badge runs
+  `reproduce.ipynb` end to end in the browser.
 - Locally: the two commands under **Run it** below reproduce the same checks.
 - No script takes the fine-structure constant, 137, or any measured
   constant as an input to a computed quantity; the measured value appears
