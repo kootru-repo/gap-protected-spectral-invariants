@@ -15,37 +15,47 @@ the verified results: the mode count `N_4(5) = 137 = 1 + 8 + 128`, the
 spectral radius `rho < 7.2e-3`, the Born interval `[137.03596, 137.03607]`,
 and the smooth spectral action `137.036015074`.
 
-## See it without running anything
+Three ways to check the results, from least to most involvement. The
+computation is never on your machine unless you want it to be.
 
-The **view executed** badge above opens the notebook *already run* on
-GitHub's servers:
+## 1. Look (no login, no launch)
+
+The **view executed** badge opens the notebook *already run* on GitHub's
+servers:
 [kootru-repo.github.io/gap-protected-spectral-invariants](https://kootru-repo.github.io/gap-protected-spectral-invariants/).
-Every headline number appears beside the value printed in the paper, with
-its equation or theorem number and an `OK` match. GitHub Actions re-executes
-the notebook on each commit and republishes it, and the page only updates
-when all checks pass -- so what you read there is a live, machine-run result,
-not a saved screenshot. No login, no launch, nothing on your machine.
+Every headline number sits beside the value printed in the paper, with its
+equation or theorem number and an `OK` match. GitHub Actions re-executes the
+notebook on every commit and republishes it; the page updates only when all
+checks pass, so it is a machine-run result, not a saved screenshot. It is a
+static render -- it shows the computation, it does not perform it as you
+read.
 
-## Run it yourself in the browser
+## 2. Re-run the whole thing live (one click, no install)
 
-Click **Open in Colab** above. It opens `reproduce.ipynb`; choose
-*Runtime -> Run all*. The notebook clones this repository, installs the
-dependencies, recomputes each headline number and checks it against the
-value printed in the paper -- with the equation or theorem number shown
-next to it -- and then runs the full suite. No local install.
+The **Open in Colab** badge runs `reproduce.ipynb` on Google's servers.
+Choose *Runtime -> Run all*: it clones this repository, installs the
+dependencies, recomputes each headline number against the paper (equation
+and theorem numbers shown next to each), and then runs the **full
+826-check suite** -- the same `run_all.py` the CI runs. This is the live,
+from-source re-run, including the parts too heavy for an in-browser kernel
+(the crystallographic sweep over the bundled CARAT catalogue and the
+adversarial battery). Nothing runs on your machine.
+
+## 3. Run locally
+
+The two commands under **Run it** below reproduce the same checks on your
+own machine.
 
 ## For reviewers
 
-- Read-only, zero setup: the **view executed** badge shows the notebook
-  already run on GitHub's servers.
-- Re-run it yourself, no install: the **Open in Colab** badge runs
-  `reproduce.ipynb` end to end in the browser.
-- Locally: the two commands under **Run it** below reproduce the same checks.
+- The strongest evidence is the **continuous integration**: the full suite
+  runs on every commit on fresh Linux and Windows machines across Python
+  3.11-3.13 (the green badge above), with public per-step logs.
+- For a live, from-source re-run of the entire suite, the **Open in Colab**
+  badge needs only a browser.
 - No script takes the fine-structure constant, 137, or any measured
   constant as an input to a computed quantity; the measured value appears
   only as an external comparison target in the agreement checks.
-- The green badge above is the same suite run on every commit, on Linux and
-  Windows across Python 3.11-3.13.
 
 ## Run it
 
