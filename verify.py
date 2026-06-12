@@ -1,5 +1,5 @@
 """
-verify.py -- 295 checks for the JGP paper.
+verify.py -- 298 checks for the paper.
 Covers Jacobi shell counts, three-sector decomposition, K* saturation,
 geometric correction Delta_1, genus expansion, Krawtchouk eigenvalues,
 Z_3 negative theorem, dimensional rigidity.

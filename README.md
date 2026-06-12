@@ -1,6 +1,7 @@
 # Spectral rigidity verification
 
 [![verify](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml/badge.svg)](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/kootru-repo/gap-protected-spectral-invariants/main?labpath=reproduce.ipynb)
 
 Reproducible verification code for the paper *Gap-protected spectral
 invariants on T^d/Z_2: dimensional rigidity at d = 4*
@@ -8,7 +9,10 @@ invariants on T^d/Z_2: dimensional rigidity at d = 4*
 
 Every numerical and structural claim in the paper is recomputed here from
 first principles: exact lattice enumeration, closed forms, high-precision
-`mpmath`, cyclotomic roots, and an exhaustive crystallographic sweep.
+`mpmath`, cyclotomic roots, and an exhaustive crystallographic sweep. Among
+the verified results: the mode count `N_4(5) = 137 = 1 + 8 + 128`, the
+spectral radius `rho < 7.2e-3`, the Born interval `[137.03596, 137.03607]`,
+and the smooth spectral action `137.036015074`.
 
 ## Continuous integration
 
@@ -17,18 +21,21 @@ The full suite runs on every commit, on **Linux and Windows** across
 
 - Live runs (click to inspect any job's log):
   **https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml**
+- [Most recent passing runs](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml?query=is%3Asuccess+branch%3Amain)
 - The green badge above means every check below passed from a clean
   `pip install` on both operating systems.
 
 ## For reviewers
 
-- One-glance reproducibility proof: open the
-  [Actions runs](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml);
+- Run it in the browser, no install: click the **Binder** badge above to
+  launch a live environment and open `reproduce.ipynb`, which executes the
+  headline checks and prints the numbers.
+- Or open the
+  [Actions runs](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml):
   each run is a fresh-machine pass on Linux and Windows, with the full
-  per-step log viewable in the browser. No local setup required to confirm
-  it reproduces.
-- To run it yourself, the two commands under **Run it** below reproduce the
-  same checks locally.
+  per-step log viewable in the browser.
+- To run it locally, the two commands under **Run it** below reproduce the
+  same checks.
 - No script takes the fine-structure constant, 137, or any measured
   constant as an input to a computed quantity; the measured value appears
   only as an external comparison target in the agreement checks.

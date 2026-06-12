@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper it verifies."
+title: "Verification suite for gap-protected spectral invariants on T^d/Z_2"
+authors:
+  - family-names: Craton
+    given-names: Andrew
+    orcid: "https://orcid.org/0009-0001-2269-8599"
+    affiliation: "Kootru Labs, Burlington, Wisconsin, USA"
+repository-code: "https://github.com/kootru-repo/gap-protected-spectral-invariants"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Gap-protected spectral invariants on T^d/Z_2: dimensional rigidity at d = 4"
+  authors:
+    - family-names: Craton
+      given-names: Andrew
+      orcid: "https://orcid.org/0009-0001-2269-8599"
+  doi: "10.5281/zenodo.20597196"
+  year: 2026

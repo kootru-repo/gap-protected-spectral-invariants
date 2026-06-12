@@ -1,0 +1,10 @@
+name: spectral-rigidity
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - numpy>=1.24
+      - sympy>=1.12
+      - mpmath>=1.3

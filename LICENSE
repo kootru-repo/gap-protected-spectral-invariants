@@ -19,11 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-----------------------------------------------------------------------------
-
-The directory substrate-sweep/carat/ contains a subset of the CARAT
-catalogue (github.com/lbfm-rwth/carat), redistributed under the GNU General
-Public License, version 2. Its license and provenance are in
-substrate-sweep/carat/LICENSE and substrate-sweep/carat/NOTICE.txt. The MIT
-license above does not apply to that subtree.

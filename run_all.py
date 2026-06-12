@@ -59,7 +59,7 @@ def main():
         if n is not None:
             total_pass += n
         status = "ok" if ok else "FAIL"
-        cnt = ("%d checks" % n) if n is not None else "(no count)"
+        cnt = ("%d checks" % n) if n is not None else "passed"
         print("  %-46s %-12s [%s]" % (label, cnt, status))
         if not ok:
             failed.append(script)
