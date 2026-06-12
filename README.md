@@ -18,8 +18,9 @@ and the smooth spectral action `137.036015074`.
 
 Click **Open in Colab** above. It opens `reproduce.ipynb`; choose
 *Runtime -> Run all*. The notebook clones this repository, installs the
-dependencies, prints the headline numbers, and runs the full suite. No
-local install.
+dependencies, recomputes each headline number and checks it against the
+value printed in the paper -- with the equation or theorem number shown
+next to it -- and then runs the full suite. No local install.
 
 ## For reviewers
 
