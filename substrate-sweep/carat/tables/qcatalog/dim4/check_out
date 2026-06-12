@@ -1,0 +1,492 @@
+Script started on Wed Jul 28 18:54:14 1999
+bash: /tmp_mnt/usb2/carat/tables/qcatalog/dim4/.bash_alias: No such file or directory
+"I have the simplest tastes.  I am always satisfied with the best."
+                -- Oscar Wilde
+carat@emmy:~ $> cd / table        pwd
+/tmp_mnt/usb2/carat/tables/qcatalog/dim4
+carat@emmy:~ $> ll
+total 50
+-rw-r--r--   1 carat      algebra         51 Jul 15 10:46 BASIS
+-rw-r--r--   1 carat      algebra        360 Jul 28 18:54 check_out
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.1,1,1,1
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.1,1,1;1
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.1,1;1,1
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.1,1;1;1
+drwxr-xr-x   5 carat      algebra       1024 Jun 21 16:35 dir.1;1;1;1
+drwxr-xr-x   3 carat      algebra       1024 Jun 21 16:35 dir.2-1',2-1'
+drwxr-xr-x   3 carat      algebra       1024 Jun 21 16:35 dir.2-1,2-1
+drwxr-xr-x   5 carat      algebra       1024 Jun 21 16:35 dir.2-1;1,1
+drwxr-xr-x   6 carat      algebra       1024 Jun 21 16:35 dir.2-1;1;1
+drwxr-xr-x   6 carat      algebra       1024 Jun 21 16:35 dir.2-1;2-1
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.2-2',2-2'
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.2-2,2-2
+drwxr-xr-x   6 carat      algebra       1024 Jun 21 16:35 dir.2-2;1,1
+drwxr-xr-x   6 carat      algebra       1024 Jun 21 16:35 dir.2-2;1;1
+drwxr-xr-x   6 carat      algebra       1024 Jun 21 16:35 dir.2-2;2-1
+drwxr-xr-x  10 carat      algebra       1024 Jun 21 16:35 dir.2-2;2-2
+drwxr-xr-x   6 carat      algebra       1024 Jun 21 16:35 dir.3;1
+drwxr-xr-x  17 carat      algebra       1024 Jun 21 16:35 dir.4-1
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.4-1'
+drwxr-xr-x  10 carat      algebra       1024 Jun 21 16:35 dir.4-2
+drwxr-xr-x   4 carat      algebra       1024 Jun 21 16:35 dir.4-2'
+drwxr-xr-x   7 carat      algebra       1024 Jun 21 16:35 dir.4-3
+drwxr-xr-x   5 carat      algebra       1024 Jun 21 16:35 dir.4-3'
+carat@emmy:~ $> ../checknew.sh 
+The group has trivial cohomology with this lattice.
+min.15
+The group has trivial cohomology with this lattice.
+group.26
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+min.16
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+min.17
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.27
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+min.18
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.28
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+min.19
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+min.20
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2
+min.21
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.29
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.30
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2
+min.22
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.31
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.32
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.33
+The group has trivial cohomology with this lattice.
+min.23
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+min.24
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.34
+Isomorphism type of H^1(G,Q^n/Z^n): C_4 X C_4
+min.25
+The group has trivial cohomology with this lattice.
+min.26
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.35
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_4 X C_4
+group.36
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2
+group.37
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.38
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.39
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.40
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.41
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_4
+group.42
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.43
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.44
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.45
+Isomorphism type of H^1(G,Q^n/Z^n): C_4
+min.27
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.46
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_4
+group.47
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_4
+group.48
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.49
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+min.28
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_4
+min.29
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.50
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.51
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.52
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+min.30
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.53
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+min.31
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.54
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.55
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.56
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.57
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.58
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+min.32
+The group has trivial cohomology with this lattice.
+min.33
+The group has trivial cohomology with this lattice.
+group.59
+The group has trivial cohomology with this lattice.
+group.60
+The group has trivial cohomology with this lattice.
+min.34
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.61
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.62
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.63
+Isomorphism type of H^1(G,Q^n/Z^n): C_6 X C_6
+group.64
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.65
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.66
+Isomorphism type of H^1(G,Q^n/Z^n): C_3 X C_3
+min.35
+The group has trivial cohomology with this lattice.
+group.67
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.68
+Isomorphism type of H^1(G,Q^n/Z^n): C_3 X C_3
+group.69
+Isomorphism type of H^1(G,Q^n/Z^n): C_6 X C_6
+group.70
+The group has trivial cohomology with this lattice.
+group.71
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.72
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.73
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.74
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_6
+group.75
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.76
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_6
+group.77
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.78
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.79
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_6
+group.80
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_6
+group.81
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.82
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.83
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.84
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.85
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.86
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_6
+group.87
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2
+group.88
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.89
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.90
+Isomorphism type of H^1(G,Q^n/Z^n): C_6
+min.36
+Isomorphism type of H^1(G,Q^n/Z^n): C_6
+min.37
+Isomorphism type of H^1(G,Q^n/Z^n): C_6
+min.38
+The group has trivial cohomology with this lattice.
+min.39
+The group has trivial cohomology with this lattice.
+min.40
+The group has trivial cohomology with this lattice.
+min.41
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.91
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.92
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.93
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.94
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.95
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.96
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.97
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.98
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.100
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.101
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.99
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.102
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.103
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.104
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.105
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.106
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.107
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.108
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+max.6
+The group has trivial cohomology with this lattice.
+group.109
+The group has trivial cohomology with this lattice.
+group.110
+The group has trivial cohomology with this lattice.
+group.111
+The group has trivial cohomology with this lattice.
+group.112
+The group has trivial cohomology with this lattice.
+group.113
+Isomorphism type of H^1(G,Q^n/Z^n): C_3 X C_3
+group.114
+Isomorphism type of H^1(G,Q^n/Z^n): C_3
+group.115
+Isomorphism type of H^1(G,Q^n/Z^n): C_3 X C_3
+group.116
+The group has trivial cohomology with this lattice.
+group.117
+The group has trivial cohomology with this lattice.
+group.118
+The group has trivial cohomology with this lattice.
+group.119
+The group has trivial cohomology with this lattice.
+group.120
+The group has trivial cohomology with this lattice.
+group.121
+Isomorphism type of H^1(G,Q^n/Z^n): C_3
+group.122
+Isomorphism type of H^1(G,Q^n/Z^n): C_3
+group.123
+The group has trivial cohomology with this lattice.
+group.124
+The group has trivial cohomology with this lattice.
+group.125
+Isomorphism type of H^1(G,Q^n/Z^n): C_3 X C_3
+group.126
+The group has trivial cohomology with this lattice.
+group.127
+The group has trivial cohomology with this lattice.
+min.42
+The group has trivial cohomology with this lattice.
+group.128
+The group has trivial cohomology with this lattice.
+group.129
+The group has trivial cohomology with this lattice.
+group.130
+Isomorphism type of H^1(G,Q^n/Z^n): C_3
+group.131
+The group has trivial cohomology with this lattice.
+group.132
+Isomorphism type of H^1(G,Q^n/Z^n): C_3 X C_3
+min.43
+Isomorphism type of H^1(G,Q^n/Z^n): C_6
+min.44
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.133
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.134
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_6
+group.135
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.136
+Isomorphism type of H^1(G,Q^n/Z^n): C_6
+group.137
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_4
+group.138
+Isomorphism type of H^1(G,Q^n/Z^n): C_6
+group.139
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.140
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.141
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_6
+group.142
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.143
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.144
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.145
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.146
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.147
+The group has trivial cohomology with this lattice.
+max.7
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.148
+The group has trivial cohomology with this lattice.
+group.149
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.150
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.151
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+min.45
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.152
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.153
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.154
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.155
+The group has trivial cohomology with this lattice.
+group.156
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.157
+The group has trivial cohomology with this lattice.
+group.158
+The group has trivial cohomology with this lattice.
+min.46
+The group has trivial cohomology with this lattice.
+group.159
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.160
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2 X C_2 X C_2
+group.161
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.162
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.163
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+min.47
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.164
+The group has trivial cohomology with this lattice.
+group.165
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.166
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.167
+The group has trivial cohomology with this lattice.
+group.168
+The group has trivial cohomology with this lattice.
+group.169
+The group has trivial cohomology with this lattice.
+group.170
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2 X C_2
+group.171
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.172
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2 X C_2
+group.173
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.174
+The group has trivial cohomology with this lattice.
+group.175
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+min.48
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.176
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.177
+Isomorphism type of H^1(G,Q^n/Z^n): C_2 X C_2
+group.178
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.179
+Isomorphism type of H^1(G,Q^n/Z^n): C_2
+group.180
+The group has trivial cohomology with this lattice.
+min.49
+The group has trivial cohomology with this lattice.
+min.50
+The group has trivial cohomology with this lattice.
+group.181
+The group has trivial cohomology with this lattice.
+group.182
+The group has trivial cohomology with this lattice.
+group.183
+The group has trivial cohomology with this lattice.
+group.184
+Isomorphism type of H^1(G,Q^n/Z^n): C_3
+min.51
+The group has trivial cohomology with this lattice.
+group.185
+The group has trivial cohomology with this lattice.
+group.186
+The group has trivial cohomology with this lattice.
+min.52
+The group has trivial cohomology with this lattice.
+max.8
+The group has trivial cohomology with this lattice.
+group.187
+The group has trivial cohomology with this lattice.
+group.188
+The group has trivial cohomology with this lattice.
+group.189
+The group has trivial cohomology with this lattice.
+min.53
+The group has trivial cohomology with this lattice.
+group.190
+The group has trivial cohomology with this lattice.
+group.191
+The group has trivial cohomology with this lattice.
+group.192
+The group has trivial cohomology with this lattice.
+group.193
+The group has trivial cohomology with this lattice.
+group.194
+The group has trivial cohomology with this lattice.
+group.195
+The group has trivial cohomology with this lattice.
+group.196
+The group has trivial cohomology with this lattice.
+group.197
+The group has trivial cohomology with this lattice.
+min.54
+The group has trivial cohomology with this lattice.
+group.198
+The group has trivial cohomology with this lattice.
+group.199
+Isomorphism type of H^1(G,Q^n/Z^n): C_3
+group.200
+The group has trivial cohomology with this lattice.
+group.201
+The group has trivial cohomology with this lattice.
+min.55
+The group has trivial cohomology with this lattice.
+max.9
+The group has trivial cohomology with this lattice.
+group.202
+Isomorphism type of H^1(G,Q^n/Z^n): C_3
+min.56
+The group has trivial cohomology with this lattice.
+group.203
+The group has trivial cohomology with this lattice.
+group.204
+The group has trivial cohomology with this lattice.
+group.205
+The group has trivial cohomology with this lattice.
+min.57
+carat@emmy:~ $> exit
+exit
+
+script done on Wed Jul 28 19:13:32 1999

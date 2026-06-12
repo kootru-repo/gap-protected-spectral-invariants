@@ -1,0 +1,24 @@
+CARAT catalogue subset: provenance
+==================================
+
+This directory contains the dimension-4 Q/Z-class catalogue tables of
+CARAT (Crystallographic AlgoRithms And Tables), redistributed unmodified:
+
+  Source:    https://github.com/lbfm-rwth/carat
+  Commit:    65619d6ae4ec911c8cf7aa3c9fa09866a0d36ab9 (2024-12-20)
+  Retrieved: 2026-06-04
+  Subset:    tables/qcatalog/dim4/ (910 files, ~0.84 MB), one file per
+             Z-class representative of the 227 conjugacy classes of
+             finite subgroups of GL(4,Z) (Brown-Bulow-Neubuser-
+             Wondratschek-Zassenhaus 1978, as distributed in CARAT).
+
+Byte-level integrity was verified against the upstream repository at the
+commit above (git working tree clean; no file modified).
+
+License: GNU General Public License v2 (see LICENSE in this directory,
+copied from the CARAT distribution). This GPL-2 license applies to this
+subtree only; the verification scripts in the parent archive are under
+the MIT License (see the archive-level LICENSE file).
+
+The subset is read by ../carat_sweep.py, which sweeps all 227 catalogue
+groups and their subgroups for the substrate-uniqueness result.

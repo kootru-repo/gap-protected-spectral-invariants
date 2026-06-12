@@ -1,0 +1,1348 @@
+#7
+4x5
+1 3 0 0 0 
+1 1 0 0 0 
+4 2 3 2 3 
+1 8 0 0 0
+4x5
+1 3 0 0 0 
+1 2 0 0 0 
+4 2 3 2 3 
+1 8 0 0 0
+4x5
+1 3 0 0 0 
+2 1 2 0 0 
+4 2 3 2 3 
+1 8 0 0 0
+4x5
+1 1 0 0 0 
+1 2 0 0 0 
+4 2 3 2 3 
+1 8 0 0 0
+4x5
+2 3 2 0 0 
+1 1 0 0 0 
+4 2 3 2 3 
+1 8 0 0 0
+4x5
+2 1 3 0 0 
+1 2 0 0 0 
+4 2 3 2 3 
+1 8 0 0 0
+4x5
+2 3 2 0 0 
+2 1 2 0 0 
+4 2 3 2 3 
+1 8 0 0 0
+#7 1 1 0
+0 1 group.31 1 2 0
+1 1 group.48 2 1 0
+2 1 group.36 1 1 0
+3 1 group.31 1 1 0
+4 1 group.47 1 1 0
+5 1 min.29 1 1 0
+6 1 group.48 1 1 0
+#7 1 1 1
+0 1 group.31 1 2 4
+1 1 group.48 2 1 0
+2 1 group.36 1 1 4
+3 1 group.31 1 1 1
+4 1 group.47 1 1 20
+5 1 min.29 1 1 16
+6 1 group.48 1 1 0
+#7 1 1 10
+0 1 group.31 1 2 9
+1 1 group.48 2 1 2
+2 1 group.36 1 1 0
+3 1 group.31 1 1 16
+4 1 group.47 1 1 0
+5 1 min.29 1 1 5
+6 1 group.48 1 1 2
+#7 1 1 11
+0 1 group.31 1 2 13
+1 1 group.48 2 1 2
+2 1 group.36 1 1 4
+3 1 group.31 1 1 17
+4 1 group.47 1 1 20
+5 1 min.29 1 1 21
+6 1 group.48 1 1 2
+#7 1 1 12
+0 1 group.31 1 2 0
+1 1 group.48 2 1 3
+2 1 group.36 1 1 5
+3 1 group.31 1 1 56
+4 1 group.47 1 1 1
+5 1 min.29 1 1 3
+6 1 group.48 1 1 1
+#7 1 1 13
+0 1 group.31 1 2 4
+1 1 group.48 2 1 3
+2 1 group.36 1 1 5
+3 1 group.31 1 1 57
+4 1 group.47 1 1 21
+5 1 min.29 1 1 19
+6 1 group.48 1 1 1
+#7 1 1 14
+0 1 group.31 1 2 9
+1 1 group.48 2 1 3
+2 1 group.36 1 1 1
+3 1 group.31 1 1 56
+4 1 group.47 1 1 0
+5 1 min.29 1 1 7
+6 1 group.48 1 1 3
+#7 1 1 15
+0 1 group.31 1 2 13
+1 1 group.48 2 1 3
+2 1 group.36 1 1 5
+3 1 group.31 1 1 57
+4 1 group.47 1 1 20
+5 1 min.29 1 1 23
+6 1 group.48 1 1 3
+#7 1 1 16
+0 1 group.31 1 2 16
+1 1 group.48 2 1 0
+2 1 group.36 1 1 1
+3 1 group.31 1 1 3
+4 1 group.47 1 1 2
+5 1 min.29 1 1 0
+6 1 group.48 1 1 1
+#7 1 1 17
+0 1 group.31 1 2 20
+1 1 group.48 2 1 0
+2 1 group.36 1 1 5
+3 1 group.31 1 1 7
+4 1 group.47 1 1 22
+5 1 min.29 1 1 16
+6 1 group.48 1 1 1
+#7 1 1 18
+0 1 group.31 1 2 25
+1 1 group.48 2 1 0
+2 1 group.36 1 1 5
+3 1 group.31 1 1 3
+4 1 group.47 1 1 3
+5 1 min.29 1 1 4
+6 1 group.48 1 1 3
+#7 1 1 19
+0 1 group.31 1 2 29
+1 1 group.48 2 1 0
+2 1 group.36 1 1 5
+3 1 group.31 1 1 7
+4 1 group.47 1 1 23
+5 1 min.29 1 1 20
+6 1 group.48 1 1 3
+#7 1 1 2
+0 1 group.31 1 2 9
+1 1 group.48 2 1 0
+2 1 group.36 1 1 4
+3 1 group.31 1 1 0
+4 1 group.47 1 1 1
+5 1 min.29 1 1 4
+6 1 group.48 1 1 2
+#7 1 1 20
+0 1 group.31 1 2 16
+1 1 group.48 2 1 1
+2 1 group.36 1 1 0
+3 1 group.31 1 1 46
+4 1 group.47 1 1 2
+5 1 min.29 1 1 2
+6 1 group.48 1 1 0
+#7 1 1 21
+0 1 group.31 1 2 20
+1 1 group.48 2 1 1
+2 1 group.36 1 1 4
+3 1 group.31 1 1 47
+4 1 group.47 1 1 22
+5 1 min.29 1 1 18
+6 1 group.48 1 1 0
+#7 1 1 22
+0 1 group.31 1 2 25
+1 1 group.48 2 1 1
+2 1 group.36 1 1 4
+3 1 group.31 1 1 46
+4 1 group.47 1 1 3
+5 1 min.29 1 1 6
+6 1 group.48 1 1 2
+#7 1 1 23
+0 1 group.31 1 2 29
+1 1 group.48 2 1 1
+2 1 group.36 1 1 4
+3 1 group.31 1 1 47
+4 1 group.47 1 1 23
+5 1 min.29 1 1 22
+6 1 group.48 1 1 2
+#7 1 1 24
+0 1 group.31 1 2 16
+1 1 group.48 2 1 2
+2 1 group.36 1 1 5
+3 1 group.31 1 1 22
+4 1 group.47 1 1 3
+5 1 min.29 1 1 1
+6 1 group.48 1 1 1
+#7 1 1 25
+0 1 group.31 1 2 20
+1 1 group.48 2 1 2
+2 1 group.36 1 1 5
+3 1 group.31 1 1 23
+4 1 group.47 1 1 23
+5 1 min.29 1 1 17
+6 1 group.48 1 1 1
+#7 1 1 26
+0 1 group.31 1 2 25
+1 1 group.48 2 1 2
+2 1 group.36 1 1 1
+3 1 group.31 1 1 22
+4 1 group.47 1 1 2
+5 1 min.29 1 1 5
+6 1 group.48 1 1 3
+#7 1 1 27
+0 1 group.31 1 2 29
+1 1 group.48 2 1 2
+2 1 group.36 1 1 5
+3 1 group.31 1 1 23
+4 1 group.47 1 1 22
+5 1 min.29 1 1 21
+6 1 group.48 1 1 3
+#7 1 1 28
+0 1 group.31 1 2 16
+1 1 group.48 2 1 3
+2 1 group.36 1 1 4
+3 1 group.31 1 1 62
+4 1 group.47 1 1 3
+5 1 min.29 1 1 3
+6 1 group.48 1 1 0
+#7 1 1 29
+0 1 group.31 1 2 20
+1 1 group.48 2 1 3
+2 1 group.36 1 1 4
+3 1 group.31 1 1 63
+4 1 group.47 1 1 23
+5 1 min.29 1 1 19
+6 1 group.48 1 1 0
+#7 1 1 3
+0 1 group.31 1 2 13
+1 1 group.48 2 1 0
+2 1 group.36 1 1 4
+3 1 group.31 1 1 1
+4 1 group.47 1 1 21
+5 1 min.29 1 1 20
+6 1 group.48 1 1 2
+#7 1 1 30
+0 1 group.31 1 2 25
+1 1 group.48 2 1 3
+2 1 group.36 1 1 0
+3 1 group.31 1 1 62
+4 1 group.47 1 1 2
+5 1 min.29 1 1 7
+6 1 group.48 1 1 2
+#7 1 1 31
+0 1 group.31 1 2 29
+1 1 group.48 2 1 3
+2 1 group.36 1 1 4
+3 1 group.31 1 1 63
+4 1 group.47 1 1 22
+5 1 min.29 1 1 23
+6 1 group.48 1 1 2
+#7 1 1 32
+0 1 group.31 1 2 2
+1 1 group.48 2 1 4
+2 1 group.36 1 1 2
+3 1 group.31 1 1 8
+4 1 group.47 1 1 8
+5 1 min.29 1 1 8
+6 1 group.48 1 1 4
+#7 1 1 33
+0 1 group.31 1 2 6
+1 1 group.48 2 1 4
+2 1 group.36 1 1 2
+3 1 group.31 1 1 10
+4 1 group.47 1 1 12
+5 1 min.29 1 1 8
+6 1 group.48 1 1 4
+#7 1 1 34
+0 1 group.31 1 2 11
+1 1 group.48 2 1 4
+2 1 group.36 1 1 2
+3 1 group.31 1 1 8
+4 1 group.47 1 1 9
+5 1 min.29 1 1 12
+6 1 group.48 1 1 6
+#7 1 1 35
+0 1 group.31 1 2 15
+1 1 group.48 2 1 4
+2 1 group.36 1 1 2
+3 1 group.31 1 1 10
+4 1 group.47 1 1 13
+5 1 min.29 1 1 12
+6 1 group.48 1 1 6
+#7 1 1 36
+0 1 group.31 1 2 2
+1 1 group.48 2 1 5
+2 1 group.36 1 1 3
+3 1 group.31 1 1 104
+4 1 group.47 1 1 8
+5 1 min.29 1 1 10
+6 1 group.48 1 1 5
+#7 1 1 37
+0 1 group.31 1 2 6
+1 1 group.48 2 1 5
+2 1 group.36 1 1 3
+3 1 group.31 1 1 105
+4 1 group.47 1 1 12
+5 1 min.29 1 1 10
+6 1 group.48 1 1 5
+#7 1 1 38
+0 1 group.31 1 2 11
+1 1 group.48 2 1 5
+2 1 group.36 1 1 3
+3 1 group.31 1 1 104
+4 1 group.47 1 1 9
+5 1 min.29 1 1 14
+6 1 group.48 1 1 7
+#7 1 1 39
+0 1 group.31 1 2 15
+1 1 group.48 2 1 5
+2 1 group.36 1 1 3
+3 1 group.31 1 1 105
+4 1 group.47 1 1 13
+5 1 min.29 1 1 14
+6 1 group.48 1 1 7
+#7 1 1 4
+0 1 group.31 1 2 0
+1 1 group.48 2 1 1
+2 1 group.36 1 1 1
+3 1 group.31 1 1 40
+4 1 group.47 1 1 0
+5 1 min.29 1 1 2
+6 1 group.48 1 1 1
+#7 1 1 40
+0 1 group.31 1 2 2
+1 1 group.48 2 1 6
+2 1 group.36 1 1 2
+3 1 group.31 1 1 80
+4 1 group.47 1 1 9
+5 1 min.29 1 1 9
+6 1 group.48 1 1 4
+#7 1 1 41
+0 1 group.31 1 2 6
+1 1 group.48 2 1 6
+2 1 group.36 1 1 2
+3 1 group.31 1 1 81
+4 1 group.47 1 1 13
+5 1 min.29 1 1 9
+6 1 group.48 1 1 4
+#7 1 1 42
+0 1 group.31 1 2 11
+1 1 group.48 2 1 6
+2 1 group.36 1 1 2
+3 1 group.31 1 1 80
+4 1 group.47 1 1 8
+5 1 min.29 1 1 13
+6 1 group.48 1 1 6
+#7 1 1 43
+0 1 group.31 1 2 15
+1 1 group.48 2 1 6
+2 1 group.36 1 1 2
+3 1 group.31 1 1 81
+4 1 group.47 1 1 12
+5 1 min.29 1 1 13
+6 1 group.48 1 1 6
+#7 1 1 44
+0 1 group.31 1 2 2
+1 1 group.48 2 1 7
+2 1 group.36 1 1 3
+3 1 group.31 1 1 120
+4 1 group.47 1 1 9
+5 1 min.29 1 1 11
+6 1 group.48 1 1 5
+#7 1 1 45
+0 1 group.31 1 2 6
+1 1 group.48 2 1 7
+2 1 group.36 1 1 3
+3 1 group.31 1 1 121
+4 1 group.47 1 1 13
+5 1 min.29 1 1 11
+6 1 group.48 1 1 5
+#7 1 1 46
+0 1 group.31 1 2 11
+1 1 group.48 2 1 7
+2 1 group.36 1 1 3
+3 1 group.31 1 1 120
+4 1 group.47 1 1 8
+5 1 min.29 1 1 15
+6 1 group.48 1 1 7
+#7 1 1 47
+0 1 group.31 1 2 15
+1 1 group.48 2 1 7
+2 1 group.36 1 1 3
+3 1 group.31 1 1 121
+4 1 group.47 1 1 12
+5 1 min.29 1 1 15
+6 1 group.48 1 1 7
+#7 1 1 48
+0 1 group.31 1 2 18
+1 1 group.48 2 1 4
+2 1 group.36 1 1 3
+3 1 group.31 1 1 13
+4 1 group.47 1 1 10
+5 1 min.29 1 1 8
+6 1 group.48 1 1 5
+#7 1 1 49
+0 1 group.31 1 2 22
+1 1 group.48 2 1 4
+2 1 group.36 1 1 3
+3 1 group.31 1 1 15
+4 1 group.47 1 1 14
+5 1 min.29 1 1 8
+6 1 group.48 1 1 5
+#7 1 1 5
+0 1 group.31 1 2 4
+1 1 group.48 2 1 1
+2 1 group.36 1 1 5
+3 1 group.31 1 1 41
+4 1 group.47 1 1 20
+5 1 min.29 1 1 18
+6 1 group.48 1 1 1
+#7 1 1 50
+0 1 group.31 1 2 27
+1 1 group.48 2 1 4
+2 1 group.36 1 1 3
+3 1 group.31 1 1 13
+4 1 group.47 1 1 11
+5 1 min.29 1 1 12
+6 1 group.48 1 1 7
+#7 1 1 51
+0 1 group.31 1 2 31
+1 1 group.48 2 1 4
+2 1 group.36 1 1 3
+3 1 group.31 1 1 15
+4 1 group.47 1 1 15
+5 1 min.29 1 1 12
+6 1 group.48 1 1 7
+#7 1 1 52
+0 1 group.31 1 2 18
+1 1 group.48 2 1 5
+2 1 group.36 1 1 2
+3 1 group.31 1 1 107
+4 1 group.47 1 1 10
+5 1 min.29 1 1 10
+6 1 group.48 1 1 4
+#7 1 1 53
+0 1 group.31 1 2 22
+1 1 group.48 2 1 5
+2 1 group.36 1 1 2
+3 1 group.31 1 1 111
+4 1 group.47 1 1 14
+5 1 min.29 1 1 10
+6 1 group.48 1 1 4
+#7 1 1 54
+0 1 group.31 1 2 27
+1 1 group.48 2 1 5
+2 1 group.36 1 1 2
+3 1 group.31 1 1 107
+4 1 group.47 1 1 11
+5 1 min.29 1 1 14
+6 1 group.48 1 1 6
+#7 1 1 55
+0 1 group.31 1 2 31
+1 1 group.48 2 1 5
+2 1 group.36 1 1 2
+3 1 group.31 1 1 111
+4 1 group.47 1 1 15
+5 1 min.29 1 1 14
+6 1 group.48 1 1 6
+#7 1 1 56
+0 1 group.31 1 2 18
+1 1 group.48 2 1 6
+2 1 group.36 1 1 3
+3 1 group.31 1 1 86
+4 1 group.47 1 1 11
+5 1 min.29 1 1 9
+6 1 group.48 1 1 5
+#7 1 1 57
+0 1 group.31 1 2 22
+1 1 group.48 2 1 6
+2 1 group.36 1 1 3
+3 1 group.31 1 1 87
+4 1 group.47 1 1 15
+5 1 min.29 1 1 9
+6 1 group.48 1 1 5
+#7 1 1 58
+0 1 group.31 1 2 27
+1 1 group.48 2 1 6
+2 1 group.36 1 1 3
+3 1 group.31 1 1 86
+4 1 group.47 1 1 10
+5 1 min.29 1 1 13
+6 1 group.48 1 1 7
+#7 1 1 59
+0 1 group.31 1 2 31
+1 1 group.48 2 1 6
+2 1 group.36 1 1 3
+3 1 group.31 1 1 87
+4 1 group.47 1 1 14
+5 1 min.29 1 1 13
+6 1 group.48 1 1 7
+#7 1 1 6
+0 1 group.31 1 2 9
+1 1 group.48 2 1 1
+2 1 group.36 1 1 5
+3 1 group.31 1 1 40
+4 1 group.47 1 1 1
+5 1 min.29 1 1 6
+6 1 group.48 1 1 3
+#7 1 1 60
+0 1 group.31 1 2 18
+1 1 group.48 2 1 7
+2 1 group.36 1 1 2
+3 1 group.31 1 1 126
+4 1 group.47 1 1 11
+5 1 min.29 1 1 11
+6 1 group.48 1 1 4
+#7 1 1 61
+0 1 group.31 1 2 22
+1 1 group.48 2 1 7
+2 1 group.36 1 1 2
+3 1 group.31 1 1 127
+4 1 group.47 1 1 15
+5 1 min.29 1 1 11
+6 1 group.48 1 1 4
+#7 1 1 62
+0 1 group.31 1 2 27
+1 1 group.48 2 1 7
+2 1 group.36 1 1 2
+3 1 group.31 1 1 126
+4 1 group.47 1 1 10
+5 1 min.29 1 1 15
+6 1 group.48 1 1 6
+#7 1 1 63
+0 1 group.31 1 2 31
+1 1 group.48 2 1 7
+2 1 group.36 1 1 2
+3 1 group.31 1 1 127
+4 1 group.47 1 1 14
+5 1 min.29 1 1 15
+6 1 group.48 1 1 6
+#7 1 1 64
+0 1 group.31 1 2 0
+1 1 group.48 2 1 8
+2 1 group.36 1 1 4
+3 1 group.31 1 1 0
+4 1 group.47 1 1 16
+5 1 min.29 1 1 16
+6 1 group.48 1 1 8
+#7 1 1 65
+0 1 group.31 1 2 4
+1 1 group.48 2 1 8
+2 1 group.36 1 1 0
+3 1 group.31 1 1 1
+4 1 group.47 1 1 4
+5 1 min.29 1 1 0
+6 1 group.48 1 1 8
+#7 1 1 66
+0 1 group.31 1 2 9
+1 1 group.48 2 1 8
+2 1 group.36 1 1 4
+3 1 group.31 1 1 0
+4 1 group.47 1 1 17
+5 1 min.29 1 1 20
+6 1 group.48 1 1 10
+#7 1 1 67
+0 1 group.31 1 2 13
+1 1 group.48 2 1 8
+2 1 group.36 1 1 4
+3 1 group.31 1 1 1
+4 1 group.47 1 1 5
+5 1 min.29 1 1 4
+6 1 group.48 1 1 10
+#7 1 1 68
+0 1 group.31 1 2 0
+1 1 group.48 2 1 9
+2 1 group.36 1 1 5
+3 1 group.31 1 1 40
+4 1 group.47 1 1 16
+5 1 min.29 1 1 18
+6 1 group.48 1 1 9
+#7 1 1 69
+0 1 group.31 1 2 4
+1 1 group.48 2 1 9
+2 1 group.36 1 1 1
+3 1 group.31 1 1 41
+4 1 group.47 1 1 4
+5 1 min.29 1 1 2
+6 1 group.48 1 1 9
+#7 1 1 7
+0 1 group.31 1 2 13
+1 1 group.48 2 1 1
+2 1 group.36 1 1 5
+3 1 group.31 1 1 41
+4 1 group.47 1 1 21
+5 1 min.29 1 1 22
+6 1 group.48 1 1 3
+#7 1 1 70
+0 1 group.31 1 2 9
+1 1 group.48 2 1 9
+2 1 group.36 1 1 5
+3 1 group.31 1 1 40
+4 1 group.47 1 1 17
+5 1 min.29 1 1 22
+6 1 group.48 1 1 11
+#7 1 1 71
+0 1 group.31 1 2 13
+1 1 group.48 2 1 9
+2 1 group.36 1 1 5
+3 1 group.31 1 1 41
+4 1 group.47 1 1 5
+5 1 min.29 1 1 6
+6 1 group.48 1 1 11
+#7 1 1 72
+0 1 group.31 1 2 0
+1 1 group.48 2 1 10
+2 1 group.36 1 1 4
+3 1 group.31 1 1 16
+4 1 group.47 1 1 17
+5 1 min.29 1 1 17
+6 1 group.48 1 1 8
+#7 1 1 73
+0 1 group.31 1 2 4
+1 1 group.48 2 1 10
+2 1 group.36 1 1 4
+3 1 group.31 1 1 17
+4 1 group.47 1 1 5
+5 1 min.29 1 1 1
+6 1 group.48 1 1 8
+#7 1 1 74
+0 1 group.31 1 2 9
+1 1 group.48 2 1 10
+2 1 group.36 1 1 4
+3 1 group.31 1 1 16
+4 1 group.47 1 1 16
+5 1 min.29 1 1 21
+6 1 group.48 1 1 10
+#7 1 1 75
+0 1 group.31 1 2 13
+1 1 group.48 2 1 10
+2 1 group.36 1 1 0
+3 1 group.31 1 1 17
+4 1 group.47 1 1 4
+5 1 min.29 1 1 5
+6 1 group.48 1 1 10
+#7 1 1 76
+0 1 group.31 1 2 0
+1 1 group.48 2 1 11
+2 1 group.36 1 1 5
+3 1 group.31 1 1 56
+4 1 group.47 1 1 17
+5 1 min.29 1 1 19
+6 1 group.48 1 1 9
+#7 1 1 77
+0 1 group.31 1 2 4
+1 1 group.48 2 1 11
+2 1 group.36 1 1 5
+3 1 group.31 1 1 57
+4 1 group.47 1 1 5
+5 1 min.29 1 1 3
+6 1 group.48 1 1 9
+#7 1 1 78
+0 1 group.31 1 2 9
+1 1 group.48 2 1 11
+2 1 group.36 1 1 5
+3 1 group.31 1 1 56
+4 1 group.47 1 1 16
+5 1 min.29 1 1 23
+6 1 group.48 1 1 11
+#7 1 1 79
+0 1 group.31 1 2 13
+1 1 group.48 2 1 11
+2 1 group.36 1 1 1
+3 1 group.31 1 1 57
+4 1 group.47 1 1 4
+5 1 min.29 1 1 7
+6 1 group.48 1 1 11
+#7 1 1 8
+0 1 group.31 1 2 0
+1 1 group.48 2 1 2
+2 1 group.36 1 1 4
+3 1 group.31 1 1 16
+4 1 group.47 1 1 1
+5 1 min.29 1 1 1
+6 1 group.48 1 1 0
+#7 1 1 80
+0 1 group.31 1 2 16
+1 1 group.48 2 1 8
+2 1 group.36 1 1 5
+3 1 group.31 1 1 3
+4 1 group.47 1 1 18
+5 1 min.29 1 1 16
+6 1 group.48 1 1 9
+#7 1 1 81
+0 1 group.31 1 2 20
+1 1 group.48 2 1 8
+2 1 group.36 1 1 1
+3 1 group.31 1 1 7
+4 1 group.47 1 1 6
+5 1 min.29 1 1 0
+6 1 group.48 1 1 9
+#7 1 1 82
+0 1 group.31 1 2 25
+1 1 group.48 2 1 8
+2 1 group.36 1 1 5
+3 1 group.31 1 1 3
+4 1 group.47 1 1 19
+5 1 min.29 1 1 20
+6 1 group.48 1 1 11
+#7 1 1 83
+0 1 group.31 1 2 29
+1 1 group.48 2 1 8
+2 1 group.36 1 1 5
+3 1 group.31 1 1 7
+4 1 group.47 1 1 7
+5 1 min.29 1 1 4
+6 1 group.48 1 1 11
+#7 1 1 84
+0 1 group.31 1 2 16
+1 1 group.48 2 1 9
+2 1 group.36 1 1 4
+3 1 group.31 1 1 46
+4 1 group.47 1 1 18
+5 1 min.29 1 1 18
+6 1 group.48 1 1 8
+#7 1 1 85
+0 1 group.31 1 2 20
+1 1 group.48 2 1 9
+2 1 group.36 1 1 0
+3 1 group.31 1 1 47
+4 1 group.47 1 1 6
+5 1 min.29 1 1 2
+6 1 group.48 1 1 8
+#7 1 1 86
+0 1 group.31 1 2 25
+1 1 group.48 2 1 9
+2 1 group.36 1 1 4
+3 1 group.31 1 1 46
+4 1 group.47 1 1 19
+5 1 min.29 1 1 22
+6 1 group.48 1 1 10
+#7 1 1 87
+0 1 group.31 1 2 29
+1 1 group.48 2 1 9
+2 1 group.36 1 1 4
+3 1 group.31 1 1 47
+4 1 group.47 1 1 7
+5 1 min.29 1 1 6
+6 1 group.48 1 1 10
+#7 1 1 88
+0 1 group.31 1 2 16
+1 1 group.48 2 1 10
+2 1 group.36 1 1 5
+3 1 group.31 1 1 22
+4 1 group.47 1 1 19
+5 1 min.29 1 1 17
+6 1 group.48 1 1 9
+#7 1 1 89
+0 1 group.31 1 2 20
+1 1 group.48 2 1 10
+2 1 group.36 1 1 5
+3 1 group.31 1 1 23
+4 1 group.47 1 1 7
+5 1 min.29 1 1 1
+6 1 group.48 1 1 9
+#7 1 1 9
+0 1 group.31 1 2 4
+1 1 group.48 2 1 2
+2 1 group.36 1 1 4
+3 1 group.31 1 1 17
+4 1 group.47 1 1 21
+5 1 min.29 1 1 17
+6 1 group.48 1 1 0
+#7 1 1 90
+0 1 group.31 1 2 25
+1 1 group.48 2 1 10
+2 1 group.36 1 1 5
+3 1 group.31 1 1 22
+4 1 group.47 1 1 18
+5 1 min.29 1 1 21
+6 1 group.48 1 1 11
+#7 1 1 91
+0 1 group.31 1 2 29
+1 1 group.48 2 1 10
+2 1 group.36 1 1 1
+3 1 group.31 1 1 23
+4 1 group.47 1 1 6
+5 1 min.29 1 1 5
+6 1 group.48 1 1 11
+#7 1 1 92
+0 1 group.31 1 2 16
+1 1 group.48 2 1 11
+2 1 group.36 1 1 4
+3 1 group.31 1 1 62
+4 1 group.47 1 1 19
+5 1 min.29 1 1 19
+6 1 group.48 1 1 8
+#7 1 1 93
+0 1 group.31 1 2 20
+1 1 group.48 2 1 11
+2 1 group.36 1 1 4
+3 1 group.31 1 1 63
+4 1 group.47 1 1 7
+5 1 min.29 1 1 3
+6 1 group.48 1 1 8
+#7 1 1 94
+0 1 group.31 1 2 25
+1 1 group.48 2 1 11
+2 1 group.36 1 1 4
+3 1 group.31 1 1 62
+4 1 group.47 1 1 18
+5 1 min.29 1 1 23
+6 1 group.48 1 1 10
+#7 1 1 95
+0 1 group.31 1 2 29
+1 1 group.48 2 1 11
+2 1 group.36 1 1 0
+3 1 group.31 1 1 63
+4 1 group.47 1 1 6
+5 1 min.29 1 1 7
+6 1 group.48 1 1 10
+#7 1 2 0
+0 1 group.31 1 8 0
+1 1 group.48 2 3 0
+2 1 group.36 1 2 0
+3 1 group.31 1 5 0
+4 1 group.47 1 2 0
+5 1 min.29 1 3 0
+6 1 group.48 1 3 0
+#7 1 2 1
+0 1 group.31 1 8 0
+1 1 group.48 2 3 1
+2 1 group.36 1 2 4
+3 1 group.31 1 5 1
+4 1 group.47 1 2 1
+5 1 min.29 1 3 1
+6 1 group.48 1 3 0
+#7 1 2 10
+0 1 group.31 1 8 6
+1 1 group.48 2 3 2
+2 1 group.36 1 2 1
+3 1 group.31 1 5 4
+4 1 group.47 1 2 6
+5 1 min.29 1 3 4
+6 1 group.48 1 3 2
+#7 1 2 11
+0 1 group.31 1 8 6
+1 1 group.48 2 3 3
+2 1 group.36 1 2 1
+3 1 group.31 1 5 5
+4 1 group.47 1 2 7
+5 1 min.29 1 3 5
+6 1 group.48 1 3 2
+#7 1 2 12
+0 1 group.31 1 8 10
+1 1 group.48 2 3 0
+2 1 group.36 1 2 4
+3 1 group.31 1 5 4
+4 1 group.47 1 2 5
+5 1 min.29 1 3 2
+6 1 group.48 1 3 1
+#7 1 2 13
+0 1 group.31 1 8 10
+1 1 group.48 2 3 1
+2 1 group.36 1 2 0
+3 1 group.31 1 5 5
+4 1 group.47 1 2 4
+5 1 min.29 1 3 3
+6 1 group.48 1 3 1
+#7 1 2 14
+0 1 group.31 1 8 14
+1 1 group.48 2 3 2
+2 1 group.36 1 2 1
+3 1 group.31 1 5 4
+4 1 group.47 1 2 7
+5 1 min.29 1 3 6
+6 1 group.48 1 3 3
+#7 1 2 15
+0 1 group.31 1 8 14
+1 1 group.48 2 3 3
+2 1 group.36 1 2 1
+3 1 group.31 1 5 5
+4 1 group.47 1 2 6
+5 1 min.29 1 3 7
+6 1 group.48 1 3 3
+#7 1 2 2
+0 1 group.31 1 8 4
+1 1 group.48 2 3 2
+2 1 group.36 1 2 1
+3 1 group.31 1 5 0
+4 1 group.47 1 2 2
+5 1 min.29 1 3 4
+6 1 group.48 1 3 2
+#7 1 2 3
+0 1 group.31 1 8 4
+1 1 group.48 2 3 3
+2 1 group.36 1 2 1
+3 1 group.31 1 5 1
+4 1 group.47 1 2 3
+5 1 min.29 1 3 5
+6 1 group.48 1 3 2
+#7 1 2 4
+0 1 group.31 1 8 1
+1 1 group.48 2 3 0
+2 1 group.36 1 2 4
+3 1 group.31 1 5 0
+4 1 group.47 1 2 1
+5 1 min.29 1 3 2
+6 1 group.48 1 3 1
+#7 1 2 5
+0 1 group.31 1 8 1
+1 1 group.48 2 3 1
+2 1 group.36 1 2 0
+3 1 group.31 1 5 1
+4 1 group.47 1 2 0
+5 1 min.29 1 3 3
+6 1 group.48 1 3 1
+#7 1 2 6
+0 1 group.31 1 8 5
+1 1 group.48 2 3 2
+2 1 group.36 1 2 1
+3 1 group.31 1 5 0
+4 1 group.47 1 2 3
+5 1 min.29 1 3 6
+6 1 group.48 1 3 3
+#7 1 2 7
+0 1 group.31 1 8 5
+1 1 group.48 2 3 3
+2 1 group.36 1 2 1
+3 1 group.31 1 5 1
+4 1 group.47 1 2 2
+5 1 min.29 1 3 7
+6 1 group.48 1 3 3
+#7 1 2 8
+0 1 group.31 1 8 2
+1 1 group.48 2 3 0
+2 1 group.36 1 2 0
+3 1 group.31 1 5 4
+4 1 group.47 1 2 4
+5 1 min.29 1 3 0
+6 1 group.48 1 3 0
+#7 1 2 9
+0 1 group.31 1 8 2
+1 1 group.48 2 3 1
+2 1 group.36 1 2 4
+3 1 group.31 1 5 5
+4 1 group.47 1 2 5
+5 1 min.29 1 3 1
+6 1 group.48 1 3 0
+#7 1 3 0
+0 1 group.31 1 7 0
+1 1 group.48 2 2 0
+2 1 group.36 1 2 0
+3 1 group.31 1 4 0
+4 1 group.47 1 3 0
+5 1 min.29 1 2 0
+6 1 group.48 1 2 0
+#7 1 3 1
+0 1 group.31 1 7 2
+1 1 group.48 2 2 0
+2 1 group.36 1 2 4
+3 1 group.31 1 4 2
+4 1 group.47 1 3 9
+5 1 min.29 1 2 8
+6 1 group.48 1 2 0
+#7 1 3 10
+0 1 group.31 1 7 9
+1 1 group.48 2 2 3
+2 1 group.36 1 2 2
+3 1 group.31 1 4 5
+4 1 group.47 1 3 6
+5 1 min.29 1 2 5
+6 1 group.48 1 2 2
+#7 1 3 11
+0 1 group.31 1 7 11
+1 1 group.48 2 2 3
+2 1 group.36 1 2 2
+3 1 group.31 1 4 7
+4 1 group.47 1 3 7
+5 1 min.29 1 2 5
+6 1 group.48 1 2 2
+#7 1 3 12
+0 1 group.31 1 7 21
+1 1 group.48 2 2 2
+2 1 group.36 1 2 2
+3 1 group.31 1 4 1
+4 1 group.47 1 3 4
+5 1 min.29 1 2 6
+6 1 group.48 1 2 3
+#7 1 3 13
+0 1 group.31 1 7 23
+1 1 group.48 2 2 2
+2 1 group.36 1 2 2
+3 1 group.31 1 4 3
+4 1 group.47 1 3 5
+5 1 min.29 1 2 6
+6 1 group.48 1 2 3
+#7 1 3 14
+0 1 group.31 1 7 29
+1 1 group.48 2 2 3
+2 1 group.36 1 2 2
+3 1 group.31 1 4 5
+4 1 group.47 1 3 6
+5 1 min.29 1 2 7
+6 1 group.48 1 2 3
+#7 1 3 15
+0 1 group.31 1 7 31
+1 1 group.48 2 2 3
+2 1 group.36 1 2 2
+3 1 group.31 1 4 7
+4 1 group.47 1 3 7
+5 1 min.29 1 2 7
+6 1 group.48 1 2 3
+#7 1 3 16
+0 1 group.31 1 7 0
+1 1 group.48 2 2 4
+2 1 group.36 1 2 4
+3 1 group.31 1 4 0
+4 1 group.47 1 3 8
+5 1 min.29 1 2 8
+6 1 group.48 1 2 4
+#7 1 3 17
+0 1 group.31 1 7 2
+1 1 group.48 2 2 4
+2 1 group.36 1 2 0
+3 1 group.31 1 4 2
+4 1 group.47 1 3 1
+5 1 min.29 1 2 0
+6 1 group.48 1 2 4
+#7 1 3 18
+0 1 group.31 1 7 8
+1 1 group.48 2 2 5
+2 1 group.36 1 2 1
+3 1 group.31 1 4 4
+4 1 group.47 1 3 10
+5 1 min.29 1 2 9
+6 1 group.48 1 2 4
+#7 1 3 19
+0 1 group.31 1 7 10
+1 1 group.48 2 2 5
+2 1 group.36 1 2 1
+3 1 group.31 1 4 6
+4 1 group.47 1 3 3
+5 1 min.29 1 2 1
+6 1 group.48 1 2 4
+#7 1 3 2
+0 1 group.31 1 7 8
+1 1 group.48 2 2 1
+2 1 group.36 1 2 1
+3 1 group.31 1 4 4
+4 1 group.47 1 3 2
+5 1 min.29 1 2 1
+6 1 group.48 1 2 0
+#7 1 3 20
+0 1 group.31 1 7 20
+1 1 group.48 2 2 4
+2 1 group.36 1 2 4
+3 1 group.31 1 4 0
+4 1 group.47 1 3 8
+5 1 min.29 1 2 10
+6 1 group.48 1 2 5
+#7 1 3 21
+0 1 group.31 1 7 22
+1 1 group.48 2 2 4
+2 1 group.36 1 2 0
+3 1 group.31 1 4 2
+4 1 group.47 1 3 1
+5 1 min.29 1 2 2
+6 1 group.48 1 2 5
+#7 1 3 22
+0 1 group.31 1 7 28
+1 1 group.48 2 2 5
+2 1 group.36 1 2 1
+3 1 group.31 1 4 4
+4 1 group.47 1 3 10
+5 1 min.29 1 2 11
+6 1 group.48 1 2 5
+#7 1 3 23
+0 1 group.31 1 7 30
+1 1 group.48 2 2 5
+2 1 group.36 1 2 1
+3 1 group.31 1 4 6
+4 1 group.47 1 3 3
+5 1 min.29 1 2 3
+6 1 group.48 1 2 5
+#7 1 3 3
+0 1 group.31 1 7 10
+1 1 group.48 2 2 1
+2 1 group.36 1 2 1
+3 1 group.31 1 4 6
+4 1 group.47 1 3 11
+5 1 min.29 1 2 9
+6 1 group.48 1 2 0
+#7 1 3 4
+0 1 group.31 1 7 20
+1 1 group.48 2 2 0
+2 1 group.36 1 2 0
+3 1 group.31 1 4 0
+4 1 group.47 1 3 0
+5 1 min.29 1 2 2
+6 1 group.48 1 2 1
+#7 1 3 5
+0 1 group.31 1 7 22
+1 1 group.48 2 2 0
+2 1 group.36 1 2 4
+3 1 group.31 1 4 2
+4 1 group.47 1 3 9
+5 1 min.29 1 2 10
+6 1 group.48 1 2 1
+#7 1 3 6
+0 1 group.31 1 7 28
+1 1 group.48 2 2 1
+2 1 group.36 1 2 1
+3 1 group.31 1 4 4
+4 1 group.47 1 3 2
+5 1 min.29 1 2 3
+6 1 group.48 1 2 1
+#7 1 3 7
+0 1 group.31 1 7 30
+1 1 group.48 2 2 1
+2 1 group.36 1 2 1
+3 1 group.31 1 4 6
+4 1 group.47 1 3 11
+5 1 min.29 1 2 11
+6 1 group.48 1 2 1
+#7 1 3 8
+0 1 group.31 1 7 1
+1 1 group.48 2 2 2
+2 1 group.36 1 2 2
+3 1 group.31 1 4 1
+4 1 group.47 1 3 4
+5 1 min.29 1 2 4
+6 1 group.48 1 2 2
+#7 1 3 9
+0 1 group.31 1 7 3
+1 1 group.48 2 2 2
+2 1 group.36 1 2 2
+3 1 group.31 1 4 3
+4 1 group.47 1 3 5
+5 1 min.29 1 2 4
+6 1 group.48 1 2 2
+#7 1 4 0
+0 1 group.31 1 9 0
+1 1 group.48 2 4 0
+2 1 group.36 1 1 0
+3 1 group.31 1 3 0
+4 1 group.47 1 4 0
+5 1 min.29 1 4 0
+6 1 group.48 1 4 0
+#7 1 4 1
+0 1 group.31 1 9 1
+1 1 group.48 2 4 0
+2 1 group.36 1 1 1
+3 1 group.31 1 3 12
+4 1 group.47 1 4 1
+5 1 min.29 1 4 0
+6 1 group.48 1 4 1
+#7 1 4 10
+0 1 group.31 1 9 0
+1 1 group.48 2 4 1
+2 1 group.36 1 1 5
+3 1 group.31 1 3 3
+4 1 group.47 1 4 4
+5 1 min.29 1 4 5
+6 1 group.48 1 4 1
+#7 1 4 11
+0 1 group.31 1 9 1
+1 1 group.48 2 4 1
+2 1 group.36 1 1 4
+3 1 group.31 1 3 15
+4 1 group.47 1 4 5
+5 1 min.29 1 4 5
+6 1 group.48 1 4 0
+#7 1 4 2
+0 1 group.31 1 9 0
+1 1 group.48 2 4 1
+2 1 group.36 1 1 1
+3 1 group.31 1 3 3
+4 1 group.47 1 4 0
+5 1 min.29 1 4 1
+6 1 group.48 1 4 1
+#7 1 4 3
+0 1 group.31 1 9 1
+1 1 group.48 2 4 1
+2 1 group.36 1 1 0
+3 1 group.31 1 3 15
+4 1 group.47 1 4 1
+5 1 min.29 1 4 1
+6 1 group.48 1 4 0
+#7 1 4 4
+0 1 group.31 1 9 2
+1 1 group.48 2 4 2
+2 1 group.36 1 1 2
+3 1 group.31 1 3 16
+4 1 group.47 1 4 2
+5 1 min.29 1 4 2
+6 1 group.48 1 4 2
+#7 1 4 5
+0 1 group.31 1 9 3
+1 1 group.48 2 4 2
+2 1 group.36 1 1 3
+3 1 group.31 1 3 28
+4 1 group.47 1 4 3
+5 1 min.29 1 4 2
+6 1 group.48 1 4 3
+#7 1 4 6
+0 1 group.31 1 9 2
+1 1 group.48 2 4 3
+2 1 group.36 1 1 3
+3 1 group.31 1 3 19
+4 1 group.47 1 4 2
+5 1 min.29 1 4 3
+6 1 group.48 1 4 3
+#7 1 4 7
+0 1 group.31 1 9 3
+1 1 group.48 2 4 3
+2 1 group.36 1 1 2
+3 1 group.31 1 3 31
+4 1 group.47 1 4 3
+5 1 min.29 1 4 3
+6 1 group.48 1 4 2
+#7 1 4 8
+0 1 group.31 1 9 0
+1 1 group.48 2 4 0
+2 1 group.36 1 1 4
+3 1 group.31 1 3 0
+4 1 group.47 1 4 4
+5 1 min.29 1 4 4
+6 1 group.48 1 4 0
+#7 1 4 9
+0 1 group.31 1 9 1
+1 1 group.48 2 4 0
+2 1 group.36 1 1 5
+3 1 group.31 1 3 12
+4 1 group.47 1 4 5
+5 1 min.29 1 4 4
+6 1 group.48 1 4 1
+#7 1 5 0
+0 1 group.31 1 10 0
+1 1 group.48 2 5 0
+2 1 group.36 1 2 0
+3 1 group.31 1 6 0
+4 1 group.47 1 5 0
+5 1 min.29 1 5 0
+6 1 group.48 1 5 0
+#7 1 5 1
+0 1 group.31 1 10 1
+1 1 group.48 2 5 1
+2 1 group.36 1 2 1
+3 1 group.31 1 6 0
+4 1 group.47 1 5 2
+5 1 min.29 1 5 1
+6 1 group.48 1 5 1
+#7 1 5 2
+0 1 group.31 1 10 2
+1 1 group.48 2 5 2
+2 1 group.36 1 2 1
+3 1 group.31 1 6 1
+4 1 group.47 1 5 1
+5 1 min.29 1 5 2
+6 1 group.48 1 5 0
+#7 1 5 3
+0 1 group.31 1 10 3
+1 1 group.48 2 5 3
+2 1 group.36 1 2 4
+3 1 group.31 1 6 1
+4 1 group.47 1 5 3
+5 1 min.29 1 5 3
+6 1 group.48 1 5 1
+#7 1 6 0
+0 1 group.31 1 12 0
+1 1 group.48 2 6 0
+2 1 group.36 1 2 0
+3 1 group.31 1 11 0
+4 1 group.47 1 6 0
+5 1 min.29 1 6 0
+6 1 group.48 1 6 0
+#7 1 6 1
+0 1 group.31 1 12 1
+1 1 group.48 2 6 0
+2 1 group.36 1 2 4
+3 1 group.31 1 11 1
+4 1 group.47 1 6 5
+5 1 min.29 1 6 4
+6 1 group.48 1 6 0
+#7 1 6 10
+0 1 group.31 1 12 4
+1 1 group.48 2 6 0
+2 1 group.36 1 2 4
+3 1 group.31 1 11 0
+4 1 group.47 1 6 4
+5 1 min.29 1 6 5
+6 1 group.48 1 6 1
+#7 1 6 11
+0 1 group.31 1 12 13
+1 1 group.48 2 6 0
+2 1 group.36 1 2 0
+3 1 group.31 1 11 1
+4 1 group.47 1 6 1
+5 1 min.29 1 6 1
+6 1 group.48 1 6 1
+#7 1 6 2
+0 1 group.31 1 12 4
+1 1 group.48 2 6 2
+2 1 group.36 1 2 0
+3 1 group.31 1 11 0
+4 1 group.47 1 6 0
+5 1 min.29 1 6 1
+6 1 group.48 1 6 1
+#7 1 6 3
+0 1 group.31 1 12 13
+1 1 group.48 2 6 2
+2 1 group.36 1 2 4
+3 1 group.31 1 11 1
+4 1 group.47 1 6 5
+5 1 min.29 1 6 5
+6 1 group.48 1 6 1
+#7 1 6 4
+0 1 group.31 1 12 2
+1 1 group.48 2 6 1
+2 1 group.36 1 2 2
+3 1 group.31 1 11 2
+4 1 group.47 1 6 2
+5 1 min.29 1 6 2
+6 1 group.48 1 6 2
+#7 1 6 5
+0 1 group.31 1 12 3
+1 1 group.48 2 6 1
+2 1 group.36 1 2 2
+3 1 group.31 1 11 3
+4 1 group.47 1 6 3
+5 1 min.29 1 6 2
+6 1 group.48 1 6 2
+#7 1 6 6
+0 1 group.31 1 12 18
+1 1 group.48 2 6 1
+2 1 group.36 1 2 2
+3 1 group.31 1 11 2
+4 1 group.47 1 6 2
+5 1 min.29 1 6 3
+6 1 group.48 1 6 3
+#7 1 6 7
+0 1 group.31 1 12 19
+1 1 group.48 2 6 1
+2 1 group.36 1 2 2
+3 1 group.31 1 11 3
+4 1 group.47 1 6 3
+5 1 min.29 1 6 3
+6 1 group.48 1 6 3
+#7 1 6 8
+0 1 group.31 1 12 0
+1 1 group.48 2 6 2
+2 1 group.36 1 2 4
+3 1 group.31 1 11 0
+4 1 group.47 1 6 4
+5 1 min.29 1 6 4
+6 1 group.48 1 6 0
+#7 1 6 9
+0 1 group.31 1 12 1
+1 1 group.48 2 6 2
+2 1 group.36 1 2 0
+3 1 group.31 1 11 1
+4 1 group.47 1 6 1
+5 1 min.29 1 6 0
+6 1 group.48 1 6 0
