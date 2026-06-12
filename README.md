@@ -8,9 +8,30 @@ invariants on T^d/Z_2: dimensional rigidity at d = 4*
 
 Every numerical and structural claim in the paper is recomputed here from
 first principles: exact lattice enumeration, closed forms, high-precision
-`mpmath`, cyclotomic roots, and an exhaustive crystallographic sweep. The
-workflow runs the full suite on Linux and Windows across Python 3.11, 3.12,
-and 3.13; the badge above reflects its current state.
+`mpmath`, cyclotomic roots, and an exhaustive crystallographic sweep.
+
+## Continuous integration
+
+The full suite runs on every commit, on **Linux and Windows** across
+**Python 3.11, 3.12, and 3.13**.
+
+- Live runs (click to inspect any job's log):
+  **https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml**
+- The green badge above means every check below passed from a clean
+  `pip install` on both operating systems.
+
+## For reviewers
+
+- One-glance reproducibility proof: open the
+  [Actions runs](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml);
+  each run is a fresh-machine pass on Linux and Windows, with the full
+  per-step log viewable in the browser. No local setup required to confirm
+  it reproduces.
+- To run it yourself, the two commands under **Run it** below reproduce the
+  same checks locally.
+- No script takes the fine-structure constant, 137, or any measured
+  constant as an input to a computed quantity; the measured value appears
+  only as an external comparison target in the agreement checks.
 
 ## Run it
 
