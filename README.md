@@ -1,7 +1,7 @@
 # Spectral rigidity verification
 
 [![verify](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml/badge.svg)](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/kootru-repo/gap-protected-spectral-invariants/main?labpath=reproduce.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kootru-repo/gap-protected-spectral-invariants/blob/main/reproduce.ipynb)
 
 Reproducible verification code for the paper *Gap-protected spectral
 invariants on T^d/Z_2: dimensional rigidity at d = 4*
@@ -14,31 +14,23 @@ the verified results: the mode count `N_4(5) = 137 = 1 + 8 + 128`, the
 spectral radius `rho < 7.2e-3`, the Born interval `[137.03596, 137.03607]`,
 and the smooth spectral action `137.036015074`.
 
-## Continuous integration
+## Run it in the browser
 
-The full suite runs on every commit, on **Linux and Windows** across
-**Python 3.11, 3.12, and 3.13**.
-
-- Live runs (click to inspect any job's log):
-  **https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml**
-- [Most recent passing runs](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml?query=is%3Asuccess+branch%3Amain)
-- The green badge above means every check below passed from a clean
-  `pip install` on both operating systems.
+Click **Open in Colab** above. It opens `reproduce.ipynb`; choose
+*Runtime -> Run all*. The notebook clones this repository, installs the
+dependencies, prints the headline numbers, and runs the full suite. No
+local install.
 
 ## For reviewers
 
-- Run it in the browser, no install: click the **Binder** badge above to
-  launch a live environment and open `reproduce.ipynb`, which executes the
-  headline checks and prints the numbers.
-- Or open the
-  [Actions runs](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml):
-  each run is a fresh-machine pass on Linux and Windows, with the full
-  per-step log viewable in the browser.
-- To run it locally, the two commands under **Run it** below reproduce the
-  same checks.
+- One click, no setup: the **Open in Colab** badge runs `reproduce.ipynb`
+  end to end in the browser.
+- Locally: the two commands under **Run it** below reproduce the same checks.
 - No script takes the fine-structure constant, 137, or any measured
   constant as an input to a computed quantity; the measured value appears
   only as an external comparison target in the agreement checks.
+- The green badge above is the same suite run on every commit, on Linux and
+  Windows across Python 3.11-3.13.
 
 ## Run it
 
