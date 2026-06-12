@@ -178,13 +178,15 @@ def z3_audit(m, qmax=70):
         fixed.add(tuple(np.round(f % 1.0, 6) % 1.0))
     F = np.array(sorted(fixed))
     assert len(F) == 9
-    norms = {}
-    A = int(qmax ** 0.5) + 3
-    for a in product(range(-A, A + 1), repeat=4):
-        v = BM @ np.array(a, dtype=float)
-        q = round(v @ v)
-        if 0 < q <= qmax and abs(v @ v - q) < 1e-9:
-            norms.setdefault(q, []).append(np.array(a))
+    # Norm form of A_2(1) (+) A_2(m) is integer-valued: enumerate vectorised.
+    box = int(qmax ** 0.5) + 3
+    r = np.arange(-box, box + 1)
+    A = np.stack(np.meshgrid(r, r, r, r, indexing="ij"), -1).reshape(-1, 4)
+    a0, a1, a2, a3 = A[:, 0], A[:, 1], A[:, 2], A[:, 3]
+    q = (a0*a0 + a0*a1 + a1*a1) + m*(a2*a2 + a2*a3 + a3*a3)
+    sel = (q > 0) & (q <= qmax)
+    A, q = A[sel], q[sel]
+    norms = {int(K): A[q == K] for K in np.unique(q)}
     r1 = len(norms.get(1, []))
     G = np.zeros((9, 9), dtype=complex)
     window = 0
@@ -227,13 +229,15 @@ def z2_audit(m, qmax=200):
     BM[:2, :2] = HEX
     BM[2, 2] = 1.0
     BM[3, 3] = np.sqrt(m)
-    norms = {}
-    A = int(qmax ** 0.5) + 2
-    for a in product(range(-A, A + 1), repeat=4):
-        v = BM @ np.array(a, dtype=float)
-        q = round(v @ v)
-        if 0 < q <= qmax and abs(v @ v - q) < 1e-9:
-            norms.setdefault(q, []).append(a)
+    # Norm form of A_2(1) (+) Z(1) (+) Z(m) is integer-valued: vectorise.
+    box = int(qmax ** 0.5) + 2
+    r = np.arange(-box, box + 1)
+    A = np.stack(np.meshgrid(r, r, r, r, indexing="ij"), -1).reshape(-1, 4)
+    a0, a1, a2, a3 = A[:, 0], A[:, 1], A[:, 2], A[:, 3]
+    q = a0*a0 + a0*a1 + a1*a1 + a2*a2 + m*a3*a3
+    sel = (q > 0) & (q <= qmax)
+    A, q = A[sel], q[sel]
+    norms = {int(K): A[q == K] for K in np.unique(q)}
     r1 = len(norms.get(1, []))
     covered, window = set(), 0
     for K in sorted(norms):

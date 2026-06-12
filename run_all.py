@@ -1,6 +1,11 @@
 """
 Top-level verification runner. Executes every check script in the repository
-and reports a roll-up. Exits nonzero if any script fails, so it can gate CI.
+in parallel and reports a roll-up as each finishes. Exits nonzero if any
+script fails, so it can gate CI.
+
+Parallelism: each script runs in its own OS process; a thread pool launches
+them and waits concurrently (subprocess releases the GIL), so the wall-clock
+is the sum of CPU work divided across the available cores, not the serial sum.
 
 Run: python run_all.py
 """
@@ -8,6 +13,7 @@ import os
 import re
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -45,29 +51,41 @@ def extract_count(text):
     return p
 
 
+def run_one(item):
+    label, cwd, script = item
+    r = subprocess.run([sys.executable, script], cwd=cwd,
+                       capture_output=True, text=True)
+    return label, script, r.returncode, extract_count(r.stdout), r.stdout, r.stderr
+
+
 def main():
     total_pass = 0
     failed = []
-    print("=" * 70)
-    print("Verification suite")
-    print("=" * 70)
-    for label, cwd, script in SCRIPTS:
-        r = subprocess.run([sys.executable, script], cwd=cwd,
-                           capture_output=True, text=True)
-        n = extract_count(r.stdout)
-        ok = (r.returncode == 0)
-        if n is not None:
-            total_pass += n
-        status = "ok" if ok else "FAIL"
-        cnt = ("%d checks" % n) if n is not None else "passed"
-        print("  %-46s %-12s [%s]" % (label, cnt, status))
-        if not ok:
-            failed.append(script)
-            sys.stdout.write(r.stdout[-2000:])
-            sys.stderr.write(r.stderr[-2000:])
-    print("-" * 70)
-    print("Aggregate checks passed (where counted): %d" % total_pass)
+    captured = {}
+    workers = min(len(SCRIPTS), (os.cpu_count() or 2))
+    print("=" * 70, flush=True)
+    print("Verification suite  (parallel, %d workers)" % workers, flush=True)
+    print("=" * 70, flush=True)
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = [pool.submit(run_one, item) for item in SCRIPTS]
+        for fut in as_completed(futures):
+            label, script, rc, n, out, err = fut.result()
+            ok = (rc == 0)
+            if n is not None:
+                total_pass += n
+            cnt = ("%d checks" % n) if n is not None else "passed"
+            print("  %-46s %-12s [%s]" % (label, cnt, "ok" if ok else "FAIL"),
+                  flush=True)
+            if not ok:
+                failed.append(script)
+                captured[script] = (out, err)
+    print("-" * 70, flush=True)
+    print("Aggregate checks passed (where counted): %d" % total_pass, flush=True)
     if failed:
+        for script in failed:
+            out, err = captured[script]
+            sys.stdout.write(out[-2000:])
+            sys.stderr.write(err[-2000:])
         print("FAILED: " + ", ".join(failed))
         return 1
     print("All verification scripts passed.")
