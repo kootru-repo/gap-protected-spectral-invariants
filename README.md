@@ -1,4 +1,4 @@
-# Spectral rigidity verification
+# Gap-protected spectral invariants on T^d/Z_2 (verification code)
 
 [![verify](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml/badge.svg)](https://github.com/kootru-repo/gap-protected-spectral-invariants/actions/workflows/verify.yml)
 [![executed notebook](https://img.shields.io/badge/notebook-view%20executed-2ea44f)](https://kootru-repo.github.io/gap-protected-spectral-invariants/)
@@ -7,6 +7,8 @@
 Reproducible verification code for the paper *Gap-protected spectral
 invariants on T^d/Z_2: dimensional rigidity at d = 4*
 (archived at [doi:10.5281/zenodo.20597196](https://doi.org/10.5281/zenodo.20597196)).
+
+**Always test against `main`.** This branch is the canonical, continuously updated version: it is the code the paper points to, and CI re-runs the full suite on it on every commit. There is deliberately no pinned release or tagged version to track down; a fixed tag would freeze you to older, possibly superseded code, so `main` is the single source of the current, corrected checks. The Zenodo DOI above archives the paper itself (PDFs), not a code snapshot to run.
 
 Every numerical and structural claim in the paper is recomputed here from
 first principles: exact lattice enumeration, closed forms, high-precision
@@ -53,6 +55,8 @@ own machine.
   3.11-3.13 (the green badge above), with public per-step logs.
 - For a live, from-source re-run of the entire suite, the **Open in Colab**
   badge needs only a browser.
+- A clean clone reproduces everything offline: `pip install -r requirements.txt && python run_all.py` exits `0`, with no network or
+  external data needed (the CARAT catalogue is bundled).
 - No script takes the fine-structure constant, 137, or any measured
   constant as an input to a computed quantity; the measured value appears
   only as an external comparison target in the agreement checks.
