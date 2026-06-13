@@ -72,6 +72,11 @@ SHIPPED_BASELINE = {
 # finish (the cold-start over-estimate spike).
 MIN_CALIB_SECONDS = 3.0
 
+# Shown as the denominator ("N/TOTAL checks") before any local run has recorded
+# the real total (the per-machine cache is gitignored, so a fresh clone -- e.g.
+# Colab -- always starts cold). Refined automatically once a run completes.
+SHIPPED_TOTAL_CHECKS = 826
+
 COUNT_RE = re.compile(
     r"(\d+)\s*/\s*(\d+)\s+checks passed"
     r"|RESULTS?:\s*(\d+)\s+passed"
@@ -161,6 +166,37 @@ def speed_factor(states, expected, now):
     if e <= 0 or a <= 0:
         return 1.0
     return min(max(a / e, 0.2), 5.0)
+
+
+def progress_snapshot(states, expected, workers, t0, total_checks):
+    """A JSON-serialisable tick: the same bar/ETA numbers the terminal draws,
+    for consumers like the reproduce.ipynb notebook to render live."""
+    now = time.perf_counter()
+    elapsed = now - t0
+    sf = speed_factor(states, expected, now)
+    eta = predict_eta(states, expected, sf, workers, now)
+    total = elapsed + eta
+    frac = 0.0 if total <= 0 else min(elapsed / total, 0.999)
+    steps = []
+    for st in states:
+        e = max(expected.get(st["script"], 4.0) * sf, 0.05)
+        if st["state"] == "done":
+            steps.append({"label": st["label"], "state": "done",
+                          "ok": st["rc"] == 0, "count": st["count"],
+                          "dur": round(st["t_end"] - st["t_start"], 1)})
+        elif st["state"] == "running":
+            el = now - st["t_start"]
+            steps.append({"label": st["label"], "state": "running",
+                          "elapsed": round(el, 1),
+                          "remaining": round(max(e - el, 0), 1)})
+        else:
+            steps.append({"label": st["label"], "state": "queued"})
+    return {"t": "tick", "elapsed": round(elapsed, 1), "eta": round(eta, 1),
+            "frac": round(frac, 4),
+            "steps_done": sum(1 for s in states if s["state"] == "done"),
+            "steps_total": len(states),
+            "checks": sum(s["count"] or 0 for s in states if s["state"] == "done"),
+            "checks_total": total_checks, "steps": steps}
 
 
 # --------------------------------------------------------------------------
@@ -293,12 +329,19 @@ def main():
         states.append({"order": i, "label": label, "cwd": cwd, "script": script,
                        "state": "queued", "t_start": None, "t_end": None,
                        "rc": None, "count": None, "out": "", "err": ""})
-    total_checks = int(expected.get("__checks_total__", 0) or 0)  # 0 on first run
+    total_checks = int(expected.get("__checks_total__", 0) or 0) or SHIPPED_TOTAL_CHECKS
     workers = min(len(SCRIPTS), (os.cpu_count() or 2))
     rich = sys.stdout.isatty() or os.environ.get("VERIFY_RICH") == "1"
     if os.environ.get("VERIFY_RICH") == "0":
         rich = False
+    json_mode = os.environ.get("VERIFY_PROGRESS") == "json"
+    if json_mode:
+        rich = False
     eta_log = os.environ.get("VERIFY_ETA_LOG")
+
+    def emit(obj):
+        sys.stdout.write(json.dumps(obj) + "\n")
+        sys.stdout.flush()
 
     t0 = time.perf_counter()
     lock = threading.Lock()
@@ -306,10 +349,24 @@ def main():
     if rich:
         renderer = LiveRenderer(states, expected, workers, t0, total_checks)
         renderer.start()
+    elif json_mode:
+        emit({"t": "start", "steps_total": len(states), "workers": workers,
+              "checks_total": total_checks,
+              "labels": [s["label"] for s in states]})
     else:
         print("=" * 70, flush=True)
         print("Verification suite  (parallel, %d workers)" % workers, flush=True)
         print("=" * 70, flush=True)
+
+    tick_stop = threading.Event()
+    def ticker():
+        while not tick_stop.is_set():
+            emit(progress_snapshot(states, expected, workers, t0, total_checks))
+            time.sleep(0.35)
+    ticker_thread = None
+    if json_mode:
+        ticker_thread = threading.Thread(target=ticker, daemon=True)
+        ticker_thread.start()
 
     log_rows = []
     log_stop = threading.Event()
@@ -333,7 +390,9 @@ def main():
             for st in states:
                 if st["state"] == "done" and st["order"] not in done_seen:
                     done_seen.add(st["order"])
-                    if not rich:
+                    if json_mode:
+                        emit(progress_snapshot(states, expected, workers, t0, total_checks))
+                    elif not rich:
                         ok = st["rc"] == 0
                         cnt = ("%d checks" % st["count"]) if st["count"] is not None else "passed"
                         print("  %-46s %-12s %-7s %s" %
@@ -343,6 +402,8 @@ def main():
 
     if renderer:
         renderer.stop()
+    if ticker_thread:
+        tick_stop.set(); ticker_thread.join(timeout=1.0)
     if logger:
         log_stop.set(); logger.join(timeout=1.0)
 
@@ -360,6 +421,13 @@ def main():
     total_pass = sum(st["count"] or 0 for st in states if st["count"] is not None)
     failed = [st for st in states if st["rc"] != 0]
     wall = time.perf_counter() - t0
+    if json_mode:
+        emit({"t": "end", "ok": not failed, "wall": round(wall, 1),
+              "checks": total_pass, "checks_total": total_checks,
+              "failed": [{"script": st["script"],
+                          "tail": (st["out"][-1500:] + st["err"][-800:])}
+                         for st in failed]})
+        return 1 if failed else 0
     print("-" * 70, flush=True)
     print("Checks passed (where counted): %d   wall time: %s" %
           (total_pass, fmt(wall)), flush=True)
