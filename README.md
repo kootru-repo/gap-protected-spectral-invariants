@@ -63,6 +63,8 @@ own machine.
 
 ## Run it
 
+> **A full run takes about a minute** on a typical multi-core machine (longer on 2-4 cores, where the heavy checks queue rather than run side by side). The live progress bar shows an accurate ETA the whole way, so you always know how much is left.
+
 ```
 pip install -r requirements.txt
 python run_all.py
@@ -74,7 +76,7 @@ Each script is also runnable on its own.
 On an interactive terminal it shows a live progress bar with an accurate
 estimated time to completion (the steps run in parallel; the ETA simulates the
 remaining schedule across your cores and recalibrates to your machine as it
-goes, so a full run is typically about a minute). Under CI, pipes, or
+goes). Under CI, pipes, or
 redirects it prints one plain line per script as it finishes, keeping logs
 clean. Force the rich view anywhere with `VERIFY_RICH=1`.
 
