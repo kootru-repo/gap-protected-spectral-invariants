@@ -71,6 +71,13 @@ python run_all.py
 `run_all.py` executes every script below and exits nonzero if any fails.
 Each script is also runnable on its own.
 
+On an interactive terminal it shows a live progress bar with an accurate
+estimated time to completion (the steps run in parallel; the ETA simulates the
+remaining schedule across your cores and recalibrates to your machine as it
+goes, so a full run is typically about a minute). Under CI, pipes, or
+redirects it prints one plain line per script as it finishes, keeping logs
+clean. Force the rich view anywhere with `VERIFY_RICH=1`.
+
 ## What is checked
 
 | Script | Verifies |

@@ -4,3 +4,7 @@ __pycache__/
 .venv/
 .pytest_cache/
 *.egg-info/
+
+# Per-machine ETA calibration cache written by run_all.py (the shipped
+# baseline lives in run_all.py; this file just refines it locally).
+.verify_timings.json
