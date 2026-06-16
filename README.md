@@ -14,8 +14,8 @@ Every numerical and structural claim in the paper is recomputed here from
 first principles: exact lattice enumeration, closed forms, high-precision
 `mpmath`, cyclotomic roots, and an exhaustive crystallographic sweep. Among
 the verified results: the mode count `N_4(5) = 137 = 1 + 8 + 128`, the
-spectral radius `rho < 7.2e-3`, the Born interval `[137.03596, 137.03607]`,
-and the smooth spectral action `137.036015074`.
+dimensional rigidity `2d = 2^{d-1}` (unique at `d = 4`), the spectral
+radius `rho < 7.2e-3`, and the `K*(d)` saturation thresholds for `d = 2..8`.
 
 Three ways to check the results, from least to most involvement. The
 computation is never on your machine unless you want it to be.
@@ -57,9 +57,9 @@ own machine.
   badge needs only a browser.
 - A clean clone reproduces everything offline: `pip install -r requirements.txt && python run_all.py` exits `0`, with no network or
   external data needed (the CARAT catalogue is bundled).
-- No script takes the fine-structure constant, 137, or any measured
-  constant as an input to a computed quantity; the measured value appears
-  only as an external comparison target in the agreement checks.
+- Every checked value derives from closed-form lattice and orbifold data
+  by exact arithmetic; no measured or fitted input enters any computed
+  quantity.
 
 ## Run it
 
@@ -85,13 +85,13 @@ clean. Force the rich view anywhere with `VERIFY_RICH=1`.
 | Script | Verifies |
 |---|---|
 | `verify.py` | Mode counts `r_4(k)`, `N_4(5)=137=1+8+128`, the Gram cascade, `K*=5` |
-| `verify_spectral_bounds.py` | Spectral radius `rho < 7.2e-3` and the Born interval |
+| `verify_spectral_bounds.py` | Spectral radius `rho < 7.2e-3`, the operator-norm interval, and the `K*(d)` saturation dictionary |
 | `verify_krein.py` | Krawtchouk eigenvalues `mu_w` and the exact theta identities |
 | `classify_crystallographic.py` | Kissing numbers and the integrality-boundary lattices |
 | `verify_computational.py` | Gram ranks, shell counts, dynamical eigenvalues |
 | `substrate-sweep/substrate_sweep.py` | `T^4/Z_2` unique over the signed-permutation group `W(B_4)` |
 | `substrate-sweep/carat_sweep.py` | `T^4/Z_2` unique over all 227 four-dimensional crystal classes |
-| `adversarial/run_all.py` | Falsification battery (no input takes the comparison constant) |
+| `adversarial/run_all.py` | Falsification battery over the decomposition and substrate claims |
 | `verify_all_values.py` | Independent recomputation of every printed value |
 
 ## Layout
