@@ -5,7 +5,8 @@ Checks F_0 cross-paths, Fredholm eigenvalues |tube * lambda_w| < 0.008,
 the exact vanishing of the off-diagonal mu_2 (theta identity), Dyson
 resummation, three-tier error budget,
 Fredholm determinant, theta identities, gap protection numerics,
-genus-2 sep/ns decomposition, and Born scattering bounds. 37 checks
+genus-2 sep/ns decomposition, Born scattering bounds, and the
+K*(d) saturation dictionary for d = 2..8. 45 checks
 total. Requires mpmath.
 """
 
@@ -660,6 +661,72 @@ check("CODATA inside conditional channel-model (g<=2) interval",
 check("Genus >= 3 tail bound < 3.8e-7",
       genus3_tail_bound < 3.8e-7,
       f"rho^3/(1-rho) = {float(genus3_tail_bound):.2e}")
+
+flush_print()
+
+
+# ============================================================
+# K*(d) DICTIONARY across dimensions (Remark: Krawtchouk method
+# as a general tool). Dynamical Gram excludes shells k=0,1; it has
+# full rank 2^d iff every Hamming-weight sector eigenvalue is nonzero.
+# mu_u(K) = sum_w Kraw_w(u;d) g_w(K),  g_w(K)=sum_{2<=|n|^2<=K} (-1)^{n_1+..+n_w}.
+# Pure integer arithmetic (theta-series convolution + Krawtchouk).
+# ============================================================
+flush_print()
+flush_print("K*(d): dynamical-Gram saturation threshold by dimension")
+
+from math import comb as _comb
+
+def _theta_plus(Kmax):
+    P = [0] * (Kmax + 1); P[0] = 1; m = 1
+    while m * m <= Kmax:
+        P[m * m] = 2; m += 1
+    return P
+
+def _theta_minus(Kmax):
+    Q = [0] * (Kmax + 1); Q[0] = 1; m = 1
+    while m * m <= Kmax:
+        Q[m * m] = 2 * ((-1) ** m); m += 1
+    return Q
+
+def _conv(a, b, Kmax):
+    c = [0] * (Kmax + 1)
+    for i, ai in enumerate(a):
+        if ai == 0:
+            continue
+        for j, bj in enumerate(b):
+            if i + j > Kmax:
+                break
+            c[i + j] += ai * bj
+    return c
+
+def _krawtchouk(w, u, d):
+    return sum((-1) ** j * _comb(u, j) * _comb(d - u, w - j) for j in range(w + 1))
+
+def _Kstar(d, Kmax=14):
+    P = _theta_plus(Kmax); Q = _theta_minus(Kmax)
+    cw = []
+    for w in range(d + 1):
+        poly = [1] + [0] * Kmax
+        for _ in range(w):
+            poly = _conv(poly, Q, Kmax)
+        for _ in range(d - w):
+            poly = _conv(poly, P, Kmax)
+        cw.append(poly)
+    for K in range(2, Kmax + 1):
+        g = [sum(cw[w][s] for s in range(2, K + 1)) for w in range(d + 1)]
+        mu = [sum(_krawtchouk(w, u, d) * g[w] for w in range(d + 1)) for u in range(d + 1)]
+        if all(m != 0 for m in mu):
+            return K
+    return None
+
+_Kstar_expected = {2: 5, 3: 5, 4: 5, 5: 5, 6: 6, 7: 7, 8: 8}
+for _d in range(2, 9):
+    _k = _Kstar(_d)
+    check(f"K*({_d}) = {_Kstar_expected[_d]} (dynamical-Gram saturation, |Fix|=2^{_d})",
+          _k == _Kstar_expected[_d], f"computed K* = {_k}")
+check("K*(4) = 5 agrees with the threshold used throughout",
+      _Kstar(4) == 5)
 
 flush_print()
 
