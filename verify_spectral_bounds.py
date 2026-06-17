@@ -6,7 +6,8 @@ the exact vanishing of the off-diagonal mu_2 (theta identity), Dyson
 resummation, three-tier error budget,
 Fredholm determinant, theta identities, gap protection numerics,
 genus-2 sep/ns decomposition, Born scattering bounds, and the
-K*(d) saturation dictionary for d = 2..8. 45 checks
+K*(d) saturation dictionary for d = 2..8, the closed form
+K*(d) = max(5, d), and the eigenvalue factorization. 59 checks
 total. Requires mpmath.
 """
 
@@ -727,6 +728,41 @@ for _d in range(2, 9):
           _k == _Kstar_expected[_d], f"computed K* = {_k}")
 check("K*(4) = 5 agrees with the threshold used throughout",
       _Kstar(4) == 5)
+
+# closed form K*(d) = max(5, d) (minimal-shell argument), d = 2..8
+for _d in range(2, 9):
+    check(f"K*({_d}) = max(5, {_d}) = {max(5, _d)} (closed form)",
+          _Kstar(_d) == max(5, _d))
+
+# dictionary: the threshold-Gram eigenvalue factorizes as
+# lambda_w = |Fix| * m_w = 2^d * 2^w * N_{d-w}(floor((K*-w)/4)) for d <= 8,
+# and degrades at d = 9 (K* = 9 admits odd coordinates +-3).
+def _Nd_small(dd, m):
+    if dd == 0:
+        return 1
+    poly = [1] + [0] * m
+    for _ in range(dd):
+        poly = _conv(poly, _theta_plus(m), m)
+    return sum(poly[: m + 1])
+
+def _Gh_threshold(d, K, h):
+    # G^(h)(K) = sum_{|n|^2<=K} (-1)^{n_1+..+n_h} = cumulative of theta_minus^h theta_plus^{d-h}
+    poly = [1] + [0] * K
+    for _ in range(h):
+        poly = _conv(poly, _theta_minus(K), K)
+    for _ in range(d - h):
+        poly = _conv(poly, _theta_plus(K), K)
+    return sum(poly[: K + 1])
+
+for _d in range(2, 9):
+    _Ks = max(5, _d)
+    _G = [_Gh_threshold(_d, _Ks, _h) for _h in range(_d + 1)]
+    _lam = [sum(_krawtchouk(_h, _w, _d) * _G[_h] for _h in range(_d + 1))
+            for _w in range(_d + 1)]
+    _fac = [2 ** _d * (2 ** _w * _Nd_small(_d - _w, (_Ks - _w) // 4))
+            for _w in range(_d + 1)]
+    check(f"dictionary: lambda_w = |Fix|*2^w*N_(d-w)(.) at K*({_d}) (d<=8)",
+          _lam == _fac, f"lambda={_lam}")
 
 flush_print()
 

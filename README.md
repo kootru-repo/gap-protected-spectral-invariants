@@ -38,7 +38,7 @@ The **Open in Colab** badge runs `reproduce.ipynb` on Google's servers.
 Choose *Runtime -> Run all*: it clones this repository, installs the
 dependencies, recomputes each headline number against the paper (equation
 and theorem numbers shown next to each), and then runs the **full
-919-check suite** -- the same `run_all.py` the CI runs. This is the live,
+933-check suite** -- the same `run_all.py` the CI runs. This is the live,
 from-source re-run, including the parts too heavy for an in-browser kernel
 (the crystallographic sweep over the bundled CARAT catalogue and the
 adversarial battery). Nothing runs on your machine.
