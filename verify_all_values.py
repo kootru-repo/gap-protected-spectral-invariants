@@ -287,12 +287,12 @@ chk("genus-2 partial = 137.035999238", g2, mp.mpf("137.035999238"), tol=1e-9)
 H1 = 137 + Delta1 / (1 + eps_star)
 chk("H1 value = 137.035999173", H1, mp.mpf("137.035999173"), tol=1e-9)
 chk("H1 full = 137.0359991735", H1, mp.mpf("137.0359991735"), tol=1e-9)
-# Born interval
+# operator-norm interval
 lo = 137 + Delta1 - rho ** 2 / (1 - rho)
 hi = 137 + Delta1 + rho ** 2 / (1 - rho)
-chk("Born interval lower rounds to 137.03596", math.floor(float(lo) * 1e5) / 1e5,
+chk("operator-norm interval lower rounds to 137.03596", math.floor(float(lo) * 1e5) / 1e5,
     137.03596, tol=1e-5)
-chk("Born interval upper rounds to 137.03607", math.ceil(float(hi) * 1e5) / 1e5,
+chk("operator-norm interval upper rounds to 137.03607", math.ceil(float(hi) * 1e5) / 1e5,
     137.03607, tol=1e-5)
 # CODATA comparison
 CODATA = mp.mpf("137.035999177")
@@ -345,7 +345,7 @@ for label, cwd, script in [
     ("W(B_4)=384 sweep, Z_2 unique (substrate_sweep.py)", SS, "substrate_sweep.py"),
     ("Q_8/Q_12/2T=5, icosian T^8/2I=25 (verify_substrate_noncyclic.py)", ADV, "verify_substrate_noncyclic.py"),
     ("mu_w/rho via inversion-split Mellin (verify_krein.py)", ROOT, "verify_krein.py"),
-    ("Born interval + tiers (verify_spectral_bounds.py)", ROOT, "verify_spectral_bounds.py"),
+    ("operator-norm interval + tiers (verify_spectral_bounds.py)", ROOT, "verify_spectral_bounds.py"),
 ]:
     r = subprocess.run([sys.executable, script], cwd=cwd,
                        capture_output=True, text=True)

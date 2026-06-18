@@ -229,7 +229,7 @@ check("Delta_1 closed form in expected range",
 # theta_3^4 = theta_2^4 + theta_4^4 (Jacobi)
 # At tau = i: theta_2(i) = theta_4(i), so theta_3^4 = 2*theta_4^4
 # Hence r = theta_4/theta_3 = 2^{-1/4}, r^4 = 1/2
-# We verify using q = e^{-pi} (nome at tau = i)
+# q = e^{-pi} is the nome at tau = i
 q = math.exp(-pi)
 # theta_3(q) = 1 + 2*sum_{n>=1} q^{n^2}
 th3 = 1 + 2 * sum(q**(n*n) for n in range(1, 200))

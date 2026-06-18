@@ -1,11 +1,11 @@
 """
-Born-series contraction bounds on T^4/Z_2 (SI Sections S4, S7).
+Neumann-series contraction bounds on T^4/Z_2 (SI Sections S4, S7).
 
 Checks F_0 cross-paths, Fredholm eigenvalues |tube * lambda_w| < 0.008,
 the exact vanishing of the off-diagonal mu_2 (theta identity), Dyson
 resummation, three-tier error budget,
 Fredholm determinant, theta identities, gap protection numerics,
-genus-2 sep/ns decomposition, Born scattering bounds, and the
+genus-2 sep/ns decomposition, operator-norm scattering bounds, and the
 K*(d) saturation dictionary for d = 2..8, the closed form
 K*(d) = max(5, d), and the eigenvalue factorization. 59 checks
 total. Requires mpmath.
@@ -86,7 +86,7 @@ n_fix = 16  # |Fix(sigma)| = 2^4
 tube = 1 / (8 * pi**2)  # Omega_4 / (2*pi)^4
 
 flush_print(SEP)
-flush_print("SPECTRAL BOUNDS VERIFICATION: BORN SERIES ON T^4/Z_2")
+flush_print("SPECTRAL BOUNDS VERIFICATION: NEUMANN SERIES ON T^4/Z_2")
 flush_print(SEP)
 flush_print()
 flush_print(f"  Delta_1           = {float(Delta_1):.6f}")
@@ -276,7 +276,7 @@ check("mu_2 = -2*G^(2) + G^(4)",
       abs(mu_2_check - mu_2_computed) < 1e-15,
       f"difference = {float(abs(mu_2_check - mu_2_computed)):.2e}")
 
-# This means G^(4) = 2*G^(2) + mu_2 ~ 2*G^(2) (nearly transparent w=2 sector)
+# G^(4) = 2*G^(2) + mu_2 ~ 2*G^(2) (nearly transparent w=2 sector)
 flush_print(f"\n  Physical: w=2 sector (6-fold, 37.5% of space) is nearly transparent")
 flush_print(f"  G^(4)/(2*G^(2)) = {float(Gh[4]/(2*Gh[2])):.10f}")
 flush_print()
@@ -547,7 +547,7 @@ flush_print()
 # The scalar model gives Delta_2 = -Delta_1^2(1-Delta_1)/(8*pi^2)
 Delta_2_scalar = -Delta_1**2 * (1 - Delta_1) / (8 * pi**2)
 
-# The per-sector Born expansion gives the genus-2 scattering amplitude:
+# The per-sector Neumann expansion gives the genus-2 scattering amplitude:
 #   delta_2 = (1/16) sum_w C(4,w) * (mu_w / (8*pi^2))^2
 # where mu_w are the Krawtchouk eigenvalues of the scattering kernel.
 # These are DIFFERENT quantities: Delta_2 is the correction to D_res
@@ -587,9 +587,9 @@ flush_print(f"  Sigma_orb = Delta_1/chi_orb = {float(Sigma_orb):.10e}")
 # NOT on the off-diagonal propagator structure.
 
 # Verify (1): Sigma_orb = Delta_1 / chi_orb (equipartition, Prop S7.6)
-# Cross-check: the per-sector self-energy must satisfy the Born bound
+# Cross-check: the per-sector self-energy must satisfy the operator-norm bound
 # tube * |Sigma_orb| < spectral radius (rho), ensuring convergence
-check("Equivariant self-energy: tube * Sigma_orb < rho (Born-consistent)",
+check("Equivariant self-energy: tube * Sigma_orb < rho (operator-norm-consistent)",
       tube * abs(Sigma_orb) < spectral_radius,
       f"tube*Sigma = {float(tube * abs(Sigma_orb)):.6e}, rho = {float(spectral_radius):.6e}")
 
@@ -598,13 +598,13 @@ check("Tr[G_0|VFix] = 16 * tube = 16/(8pi^2)",
       abs(Tr_G0_equivariant - 16 * tube) < 1e-30,
       f"16*tube = {float(16*tube):.10e}")
 
-# --- GENUS-2 EXACTNESS: sep/ns decomposition and Born bound ---
+# --- GENUS-2 EXACTNESS: sep/ns decomposition and operator-norm bound ---
 # The equivariance V = Sigma_orb * I_16 reduces genus-2 to two channels:
 #   Separating: Delta_2^sep = -Delta_1^2 / (8*pi^2)
 #   Non-separating: Delta_2^ns = +Delta_1^3 / (8*pi^2)
 #   Total: Delta_2 = Delta_2^sep + Delta_2^ns = -Delta_1^2*(1-Delta_1)/(8*pi^2)
 # Separately, the scattering amplitudes delta_g = (1/16) sum_w C(4,w)*(mu_w/(8pi^2))^g
-# provide bounds: |Delta_g| <= rho^g for g >= 2 (Born bound, Lemma S7.12).
+# provide bounds: |Delta_g| <= rho^g for g >= 2 (operator-norm bound, Lemma S7.12).
 
 Delta_2_sep = -Delta_1**2 / (8 * pi**2)
 Delta_2_ns = Delta_1**3 / (8 * pi**2)
@@ -618,9 +618,9 @@ check("Sep/ns decomposition: Delta_2^sep + Delta_2^ns == Delta_2",
       abs((Delta_2_sep + Delta_2_ns) - Delta_2_scalar) < 1e-30,
       f"|diff| = {float(abs((Delta_2_sep + Delta_2_ns) - Delta_2_scalar)):.2e}")
 
-# Born bound: |Delta_2| < rho^2 (Lemma S7.12)
+# operator-norm bound: |Delta_2| < rho^2 (Lemma S7.12)
 rho_val = spectral_radius
-check("Born bound: |Delta_2| < rho^2",
+check("operator-norm bound: |Delta_2| < rho^2",
       abs(Delta_2_scalar) < rho_val**2,
       f"|Delta_2| = {float(abs(Delta_2_scalar)):.2e}, rho^2 = {float(rho_val**2):.2e}")
 

@@ -121,7 +121,7 @@ print("Idempotency holds for ANY spectral projector and gives Var=n(1-n) for ONE
 print("mode (the H1 input), but does NOT prove the defect IS one mode; chi*G_0==eps_lo")
 print("is DEFINITIONAL. H1 is canonical-consistent but PROVEN un-forceable, so the")
 print("all-genus value 137.035999173 is FORCED-GIVEN-H1 (single-mode hypothesis H1;")
-print("H1 itself not forced), not unconditionally derived. The Born interval is the")
+print("H1 itself not forced), not unconditionally derived. The operator-norm interval is the")
 print("theorem; the all-genus value rests on H1.")
 import sys
 sys.exit(0 if passed == len(checks) else 1)

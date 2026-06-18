@@ -36,7 +36,7 @@ TIMINGS_FILE = os.path.join(HERE, ".verify_timings.json")
 # (label, working directory, script)
 SCRIPTS = [
     ("Mode count, gap protection, decomposition", HERE, "verify.py"),
-    ("Spectral radius and Born interval", HERE, "verify_spectral_bounds.py"),
+    ("Spectral radius and operator-norm interval", HERE, "verify_spectral_bounds.py"),
     ("Krawtchouk eigenvalues and exact identities", HERE, "verify_krein.py"),
     ("Crystallographic classification", HERE, "classify_crystallographic.py"),
     ("Computational cross-checks", HERE, "verify_computational.py"),
@@ -223,13 +223,8 @@ def _enable_vt():
         return False
 
 
-_UTF = (getattr(sys.stdout, "encoding", "") or "").lower().replace("-", "").startswith("utf")
-if _UTF:
-    SPIN = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"  # braille
-    BAR_FULL, BAR_EMPTY = "█", "░"  # full block / light shade
-else:
-    SPIN = "|/-\\"
-    BAR_FULL, BAR_EMPTY = "#", "."
+SPIN = "|/-\\"
+BAR_FULL, BAR_EMPTY = "#", "."
 
 
 def render_frame(states, expected, workers, t0, total_checks, color):

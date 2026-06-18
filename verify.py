@@ -87,7 +87,7 @@ check(f"b_0 = {b0} (Hurwitz cancellation)", b0 == 1)
 print("\n2. JACOBI FOUR-SQUARE THEOREM")
 
 # Verify r4_jacobi(k) for k=0..5: Jacobi formula vs brute-force enumeration.
-# No hardcoded expected values — the direct count IS the ground truth.
+# No hardcoded expected values -- the direct count IS the ground truth.
 for k in range(6):
     direct = N4_direct(k) - (N4_direct(k-1) if k > 0 else 0)
     jacobi = r4_jacobi(k)
@@ -447,7 +447,7 @@ check(f"g>=3 bound = {rho3_bound:.2e} < 5.2e-7",
       rho3_bound < 5.2e-7)
 
 # Unconditional (sign-free) operator-norm interval: 137 + Delta_1 +/- rho^2/(1-rho).
-# This is the model-independent Born interval (Lemma S7, claim iii); it uses only the
+# Model-independent operator-norm interval (Lemma S7, claim iii); it uses only the
 # magnitude bound, not the channel-model sign. Paper states [137.03596, 137.03607]
 # (the actual rho = 0.00710 rounded outward).
 rho_actual = 0.007100719
@@ -747,10 +747,10 @@ check(f"Geometric g>=3 tail: {g3_geom:.2e} < 7e-9",
 check(f"Geometric g>=3 tail in ppb: {g3_ppb:.4f} < 0.06",
       g3_ppb < 0.06)
 
-# Born-series g>=3 bound in ppb (using paper's rho < 0.008; the computed
+# Neumann-series g>=3 bound in ppb (using paper's rho < 0.008; the computed
 # rho = 0.00710 from verify_spectral_bounds.py gives a tighter 2.7 ppb).
 born_g3_ppb = rho3_bound / CODATA * 1e9
-check(f"Born g>=3 bound: {born_g3_ppb:.2f} ppb < 4",
+check(f"Neumann g>=3 bound: {born_g3_ppb:.2f} ppb < 4",
       born_g3_ppb < 4)
 
 print("\n--- Tube propagator (Eq. S-tube) ---")
@@ -791,7 +791,7 @@ def gram_character_sum(K, h):
 
 G_h_5 = [gram_character_sum(5, h) for h in range(5)]
 
-# Structural checks on G^(h)(5) — no hardcoded expected values.
+# Structural checks on G^(h)(5) -- no hardcoded expected values.
 # G^(0) = N_4(5) (all parities sum to +1 at weight 0)
 check(f"G^(0)(5) = N_4(5) = {N4(5)}", G_h_5[0] == N4(5))
 # G^(1)(5) = K* (self-referential: Jacobi + divisor structure)

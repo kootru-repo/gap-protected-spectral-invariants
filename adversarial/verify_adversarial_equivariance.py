@@ -24,7 +24,7 @@ WHAT EQUIVARIANCE ACTUALLY GIVES.
 VERDICT: weakness #2/#3 is SHARPENED in description, NOT eliminated. Equivariance
 names the conditional element precisely -- (i) the restriction to the diagonal
 channel and (ii) the single-level susceptibility identification -- but the value
-stays conditional (the Born interval is the theorem). The sign of the diagonal
+stays conditional (the operator-norm interval is the theorem). The sign of the diagonal
 correction is separately constrained to the unique spectrally-positive value
 (Test 15), but its direction and magnitude remain the model.
 
@@ -101,7 +101,7 @@ check("full-kernel correction != diagonal-channel correction "
 # 6. HONEST verdict: #2/#3 sharpened in description, NOT dissolved.
 check("conditionality NOT dissolved: the conditional element is the diagonal-"
       "channel restriction + the susceptibility identification", True)
-check("the value stays conditional; the Born interval is the theorem (Test 15: "
+check("the value stays conditional; the operator-norm interval is the theorem (Test 15: "
       "the sign is constrained by positivity, direction+magnitude are the model)",
       True)
 
@@ -123,6 +123,6 @@ print("non-trivial channels carry the majority of the kernel weight and the full
 print("resummation is the different Tr-log value prop:geom-factor disowns.")
 print("=> weakness #2/#3 is SHARPENED (the conditional element is named: diagonal-")
 print("   channel restriction + single-level susceptibility), NOT eliminated. The")
-print("   value stays conditional; the Born interval is the theorem.")
+print("   value stays conditional; the operator-norm interval is the theorem.")
 import sys
 sys.exit(0 if passed == len(checks) else 1)

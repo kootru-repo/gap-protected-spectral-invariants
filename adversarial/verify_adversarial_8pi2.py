@@ -79,7 +79,7 @@ for c in (0.123, 1.0, 7.5, 1000.0):
 # Attack 6 (I) - off-diagonal entries carry 1/(4pi^2); the Epstein value
 # Z4(1)/(4pi^2) shows up as a scattering eigenvalue mu_2; diagonal/off = 2.
 # ---------------------------------------------------------------------------
-mu = [-0.5607, 0.0888, -0.1405, -0.2295, -0.2810]   # paper born-bound eigenvalues
+mu = [-0.5607, 0.0888, -0.1405, -0.2295, -0.2810]   # paper operator-norm-bound eigenvalues
 offdiag_green = Z4_1_limit / (4.0 * PI ** 2)
 check("Z4(1)/(4pi^2) == paper mu_2",
       math.isclose(offdiag_green, mu[2], abs_tol=2e-4),

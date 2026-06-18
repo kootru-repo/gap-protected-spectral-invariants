@@ -131,7 +131,7 @@ check("NON-isolated control: diag(-1,-1,1,1) is not isolated (rejected)",
 
 # ---------------------------------------------------------------------------
 # (2) Basis / lattice independence -- chi_orb is a conjugation invariant.
-#     This is exactly what lets 227 Q-class reps stand in for all lattices.
+#     227 Q-class reps therefore stand in for all lattices.
 # ---------------------------------------------------------------------------
 M = ((1, 1, 0, 0), (0, 1, 0, 0), (0, 0, 1, 1), (0, 0, 0, 1))   # det 1, unimodular
 Minv = ((1, -1, 0, 0), (0, 1, 0, 0), (0, 0, 1, -1), (0, 0, 0, 1))

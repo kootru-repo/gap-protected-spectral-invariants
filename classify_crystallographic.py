@@ -413,7 +413,7 @@ g_z2 = -I4  # the Z_2 factor
 # Product g_z2 * g_z4 = -g_z4
 prod = g_z2 @ g_z4
 # g_z4^2 = diag(-1,-1,-1,-1) = -I = g_z2, so Z_2 is in center of Z_4
-# This means Z_2 x Z_4 requires Z_2 generator != -I
+# Z_2 x Z_4 requires Z_2 generator != -I
 # But then Z_2 generator has eigenvalue +1: non-isolated
 
 g_z2_alt = np.diag([-1, -1, 1, 1])

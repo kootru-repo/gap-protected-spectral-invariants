@@ -326,7 +326,7 @@ def main():
     check("d=4 rank at K=4 is 12", rp.get(4) == 12)
     check("d=4 rank at K=5 is 16 (full)", rp.get(5) == 16)
 
-    # Krawtchouk eigenvalues — FULL Gram matrix (all shells k=0..5)
+    # Krawtchouk eigenvalues -- FULL Gram matrix (all shells k=0..5)
     print("\n  Krawtchouk eigenvalues of full G(5) at d=4:")
     char_sums, eig_by_weight, eigs_direct = krawtchouk_eigenvalues_d4(dynamical_only=False)
     print(f"    Character sums G^(h): {dict(char_sums)}")
