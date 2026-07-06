@@ -40,13 +40,15 @@ SCRIPTS = [
     ("Krawtchouk eigenvalues and exact identities", HERE, "verify_krein.py"),
     ("Crystallographic classification", HERE, "classify_crystallographic.py"),
     ("Computational cross-checks", HERE, "verify_computational.py"),
+    ("Prime-family classification", HERE, "verify_prime_family.py"),
+    ("Theta determination at determinant 16", HERE,
+     "verify_theta_determination.py"),
     ("Substrate uniqueness over W(B_4)", os.path.join(HERE, "substrate-sweep"),
      "substrate_sweep.py"),
     ("Substrate uniqueness over 227 CARAT classes",
      os.path.join(HERE, "substrate-sweep"), "carat_sweep.py"),
     ("Adversarial / falsification suite",
      os.path.join(HERE, "adversarial"), "run_all.py"),
-    ("Definitive value verification", HERE, "verify_all_values.py"),
 ]
 
 # Measured baseline (seconds, one reference machine). Used until the host's own
@@ -60,10 +62,11 @@ SHIPPED_BASELINE = {
     "verify_krein.py": 0.3,
     "classify_crystallographic.py": 1.4,
     "verify_computational.py": 9.9,
+    "verify_prime_family.py": 0.4,
+    "verify_theta_determination.py": 290.0,
     "substrate_sweep.py": 4.1,
     "carat_sweep.py": 53.9,
     "run_all.py": 54.9,
-    "verify_all_values.py": 58.8,
 }
 
 # A completed step only recalibrates the speed factor if its expected time is at

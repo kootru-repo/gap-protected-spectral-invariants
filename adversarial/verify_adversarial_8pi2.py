@@ -2,8 +2,7 @@
 Adversarial verifier for Test 01 - coincident propagator G_0 = 1/(8pi^2).
 
 Every quantity here is a lattice / number-theoretic constant or pi. None of
-alpha, 137, or CODATA is used to SELECT the value 1/(8pi^2); CODATA appears only
-at the very end, as an external comparison, never as an input. A passing run is
+alpha, 137, or CODATA enters any computed quantity. A passing run is
 therefore itself evidence of target-blindness (attack vector T).
 
 ASCII only (Windows cp1252). Run: C:\\Python313\\python.exe verify_adversarial_8pi2.py
@@ -95,33 +94,6 @@ zeta_reg_full = Z4_1_limit / (4.0 * PI ** 2)         # ~ -0.1405
 check("full regularised propagator != 1/(8pi^2)",
       (zeta_reg_full < 0) and (abs(zeta_reg_full - G0) > 0.1),
       "full=%.4f  needed=%.4f" % (zeta_reg_full, G0))
-
-# ---------------------------------------------------------------------------
-# Attack S - sensitivity: only 1/(8pi^2) lands on CODATA. (CODATA enters HERE
-# only, as an external check - never selected the value above.)
-# ---------------------------------------------------------------------------
-gE = 0.5772156649015329
-F0 = 1.0 - math.log(PI) + 6.0 * (-0.9375482543158437) / PI ** 2 + math.log(4.0) / 3.0
-D1 = F0 + gE / 2.0
-chi = 8.0
-CODATA = 137.035999177
-
-def D_orb(prop):
-    eps_lo = D1 * (1.0 - D1) * prop
-    eps = eps_lo * (1.0 + D1 / chi)
-    return 137.0 + D1 / (1.0 + eps)
-
-v8 = D_orb(1.0 / (8.0 * PI ** 2))
-v4 = D_orb(1.0 / (4.0 * PI ** 2))
-v16 = D_orb(1.0 / (16.0 * PI ** 2))
-check("Delta_1 = F0 + gammaE/2 ~ 0.0360151",
-      math.isclose(D1, 0.0360151, abs_tol=1e-6), "D1=%.7f" % D1)
-check("only 1/(8pi^2) matches CODATA to < 1e-7",
-      (abs(v8 - CODATA) < 1e-7) and (abs(v4 - CODATA) > 1e-6) and (abs(v16 - CODATA) > 1e-6),
-      "v4=%.9f v8=%.9f v16=%.9f" % (v4, v8, v16))
-check("D_orb(8pi^2) within 0.05 ppb of CODATA",
-      abs(v8 - CODATA) / CODATA * 1e9 < 0.05,
-      "offset = %.3f ppb" % (abs(v8 - CODATA) / CODATA * 1e9))
 
 # ---------------------------------------------------------------------------
 # Report

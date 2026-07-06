@@ -1,13 +1,13 @@
 """
-Neumann-series contraction bounds on T^4/Z_2 (SI Sections S4, S7).
+Neumann-series contraction bounds on T^4/Z_2 (the SM universal-integrality
+and inter-fixed-point sections, sec:spectral-action and sec:interval).
 
-Checks F_0 cross-paths, Fredholm eigenvalues |tube * lambda_w| < 0.008,
-the exact vanishing of the off-diagonal mu_2 (theta identity), Dyson
-resummation, three-tier error budget,
+Checks F_0 cross-paths, Fredholm eigenvalues |tube * lambda_w| < 7.2e-3,
+the exact vanishing of the off-diagonal mu_2 (theta identity),
 Fredholm determinant, theta identities, gap protection numerics,
-genus-2 sep/ns decomposition, operator-norm scattering bounds, and the
+operator-norm scattering bounds, and the
 K*(d) saturation dictionary for d = 2..8, the closed form
-K*(d) = max(5, d), and the eigenvalue factorization. 59 checks
+K*(d) = max(5, d), and the eigenvalue factorization. 46 checks
 total. Requires mpmath.
 """
 
@@ -195,12 +195,11 @@ flush_print("SECTION 3: Fredholm contraction bounds (core claim)")
 flush_print(SEP)
 flush_print()
 
-# Paper claims rho < 0.008. We verify this by computing all |tube*lambda_w|
-# and checking the maximum. The value 0.008 is not assumed; it is the bound
-# stated in the manuscript (Lemma S7.12) that we independently confirm.
-FREDHOLM_THRESHOLD = mpf('0.008')
+# The manuscript bound is rho < 7.2e-3 (closed form ln 2/pi^4 = 7.1158e-3).
+# We verify it by computing all |tube*lambda_w| and checking the maximum.
+FREDHOLM_THRESHOLD = mpf('0.0072')
 
-flush_print("  Bound: |tube * lambda_w| < 0.008 in all 16 sectors?")
+flush_print("  Bound: |tube * lambda_w| < 0.0072 in all 16 sectors?")
 flush_print()
 
 all_bounded = True
@@ -213,13 +212,13 @@ for w in range(5):
     bounded = f_w < FREDHOLM_THRESHOLD
     if not bounded:
         all_bounded = False
-    flush_print(f"  w={w} (mult {mult[w]:>2}): |tube*lambda_{w}| = {float(f_w):.6e}  {'< 0.008 OK' if bounded else '>= 0.008 FAIL'}")
+    flush_print(f"  w={w} (mult {mult[w]:>2}): |tube*lambda_{w}| = {float(f_w):.6e}  {'< 0.0072 OK' if bounded else '>= 0.0072 FAIL'}")
 
 flush_print()
-check("All Fredholm eigenvalues < 0.008", all_bounded,
+check("All Fredholm eigenvalues < 0.0072", all_bounded,
       f"spectral radius = {float(spectral_radius):.6e}")
 
-check("Spectral radius < 0.008", spectral_radius < FREDHOLM_THRESHOLD,
+check("Spectral radius < 0.0072", spectral_radius < FREDHOLM_THRESHOLD,
       f"rho = {float(spectral_radius):.6e}")
 
 # Report the computed spectral radius explicitly so the actual value is visible
@@ -238,11 +237,11 @@ flush_print()
 
 
 # ============================================================
-# SECTION 4: Genus-2 coefficient mu_2
+# SECTION 4: Off-diagonal coefficient mu_2
 # ============================================================
 
 flush_print(SEP)
-flush_print("SECTION 4: Genus-2 coefficient mu_2 (off-diagonal part vanishes)")
+flush_print("SECTION 4: Off-diagonal coefficient mu_2 (vanishes exactly)")
 flush_print(SEP)
 flush_print()
 
@@ -283,103 +282,11 @@ flush_print()
 
 
 # ============================================================
-# SECTION 5: Dyson resummation bounds
+# SECTION 5: Fredholm determinant
 # ============================================================
 
 flush_print(SEP)
-flush_print("SECTION 5: Dyson resummation error bounds")
-flush_print(SEP)
-flush_print()
-
-# Paper's eps*
-eps_star = Delta_1 * (1 - Delta_1) * (1 + Delta_1/chi_orb) / (8 * pi**2)
-
-# All-genus resummation
-D_resum = 137 + Delta_1 / (1 + eps_star)
-
-# CODATA value
-alpha_inv_CODATA = mpf('137.035999177')
-alpha_inv_CODATA_unc = mpf('0.000000021')
-
-residual = D_resum - alpha_inv_CODATA
-residual_ppb = residual / alpha_inv_CODATA * 1e9
-residual_sigma = residual / alpha_inv_CODATA_unc
-
-flush_print(f"  eps*                   = {float(eps_star):.10e}")
-flush_print(f"  D_resum                = {float(D_resum):.12f}")
-flush_print(f"  CODATA 2022            = {float(alpha_inv_CODATA):.12f} +/- {float(alpha_inv_CODATA_unc)}")
-flush_print(f"  Residual               = {float(residual):+.6e}")
-flush_print(f"  Residual (ppb)         = {float(residual_ppb):+.4f}")
-flush_print(f"  Residual (sigma)       = {float(residual_sigma):+.4f}")
-flush_print()
-
-check("All-genus residual < 1 ppb",
-      abs(residual_ppb) < 1,
-      f"|residual| = {float(abs(residual_ppb)):.4f} ppb")
-
-check("All-genus residual < 1 sigma",
-      abs(residual_sigma) < 1,
-      f"|residual| = {float(abs(residual_sigma)):.4f} sigma")
-
-# Error bound on Dyson resummation: the correction from genus >= 3 is bounded by
-# Delta_1 * rho^2 / (1 - rho) where rho = spectral radius
-genus3_bound = Delta_1 * spectral_radius**2 / (1 - spectral_radius)
-flush_print(f"\n  Genus >= 3 remainder bound: Delta_1 * rho^2/(1-rho) = {float(genus3_bound):.6e}")
-flush_print(f"  This is {float(genus3_bound / Delta_1 * 100):.4f}% of Delta_1")
-
-check("Genus >= 3 remainder negligible (< 0.01% of Delta_1)",
-      genus3_bound < 1e-4 * Delta_1,
-      f"bound/Delta_1 = {float(genus3_bound/Delta_1):.2e}")
-
-flush_print()
-
-
-# ============================================================
-# SECTION 6: Three-tier consistency
-# ============================================================
-
-flush_print(SEP)
-flush_print("SECTION 6: Three-tier error budget consistency")
-flush_print(SEP)
-flush_print()
-
-# Tier 1: integer
-tier1 = mpf(N4_K)
-tier1_residual = tier1 - alpha_inv_CODATA
-
-# Tier 2: genus-1
-tier2 = N4_K + Delta_1
-tier2_residual = tier2 - alpha_inv_CODATA
-
-# Tier 3: all-genus
-tier3 = D_resum
-tier3_residual = tier3 - alpha_inv_CODATA
-
-flush_print(f"  Tier 1 (integer):   {float(tier1):.0f}          residual = {float(tier1_residual):+.6f}")
-flush_print(f"  Tier 2 (genus-1):   {float(tier2):.6f}    residual = {float(tier2_residual):+.6e}")
-flush_print(f"  Tier 3 (all-genus): {float(tier3):.12f}  residual = {float(tier3_residual):+.6e}")
-flush_print()
-
-check("Tier 1 -> Tier 2 improves by factor > 1000",
-      abs(tier2_residual) < abs(tier1_residual) / 1000,
-      f"improvement = {float(abs(tier1_residual/tier2_residual)):.0f}x")
-
-check("Tier 2 -> Tier 3 improves by factor > 100",
-      abs(tier3_residual) < abs(tier2_residual) / 100,
-      f"improvement = {float(abs(tier2_residual/tier3_residual)):.0f}x")
-
-check("Each tier strictly closer to CODATA",
-      abs(tier3_residual) < abs(tier2_residual) < abs(tier1_residual))
-
-flush_print()
-
-
-# ============================================================
-# SECTION 7: Fredholm determinant
-# ============================================================
-
-flush_print(SEP)
-flush_print("SECTION 7: Fredholm determinant at z = tube")
+flush_print("SECTION 5: Fredholm determinant at z = tube")
 flush_print(SEP)
 flush_print()
 
@@ -406,11 +313,11 @@ flush_print()
 
 
 # ============================================================
-# SECTION 8: Theta function identities
+# SECTION 6: Theta function identities
 # ============================================================
 
 flush_print(SEP)
-flush_print("SECTION 8: Exact theta function identities")
+flush_print("SECTION 6: Exact theta function identities")
 flush_print(SEP)
 flush_print()
 
@@ -440,11 +347,11 @@ flush_print()
 
 
 # ============================================================
-# SECTION 9: Gap protection (numerical verification)
+# SECTION 7: Gap protection (numerical verification)
 # ============================================================
 
 flush_print(SEP)
-flush_print("SECTION 9: Gap protection -- spectral gap at K* = 5")
+flush_print("SECTION 7: Gap protection -- spectral gap at K* = 5")
 flush_print(SEP)
 flush_print()
 
@@ -536,132 +443,25 @@ flush_print()
 
 
 # ============================================================
-# SECTION 10: Genus-2 exactness verification
+# SECTION 8: Operator-norm scattering bounds
 # ============================================================
 
 flush_print(SEP)
-flush_print("SECTION 10: Genus-2 exactness (V proportional to I_16)")
+flush_print("SECTION 8: Operator-norm scattering bounds")
 flush_print(SEP)
 flush_print()
 
-# The scalar model gives Delta_2 = -Delta_1^2(1-Delta_1)/(8*pi^2)
-Delta_2_scalar = -Delta_1**2 * (1 - Delta_1) / (8 * pi**2)
-
-# The per-sector Neumann expansion gives the genus-2 scattering amplitude:
-#   delta_2 = (1/16) sum_w C(4,w) * (mu_w / (8*pi^2))^2
-# where mu_w are the Krawtchouk eigenvalues of the scattering kernel.
-# These are DIFFERENT quantities: Delta_2 is the correction to D_res
-# (defined by the scalar recursion), while delta_2 is the per-sector
-# scattering amplitude.
-#
-# The exactness claim is that V = Sigma_orb * I_16 (equivariance)
-# causes all genus-2 operator traces to reduce to scalar products,
-# so the scalar-model computation of Delta_2 coincides with the
-# operator-level computation.
-
-# Verify: Tr[G_0|_{V_Fix}] = 16 * G_0(p,p) by equivariance
-# G_0(p,p) = 1/(8*pi^2) (gap propagator at coincident points)
-Tr_G0_equivariant = n_fix * tube  # 16/(8*pi^2)
-
-# The trace of G_0|_{V_Fix} from eigenvalues: sum_w C(4,w) * mu_w
-# NOTE: mu_w here are the scattering kernel eigenvalues, NOT the
-# diagonal propagator eigenvalues. The scattering kernel includes
-# contributions from all lattice shells, not just the gap.
-# The equivariance argument uses G_0(p,p) directly.
-
-flush_print(f"  Delta_2 (scalar model)    = {float(Delta_2_scalar):+.10e}")
-flush_print(f"  Tr[G_0|VFix] (equivar.)   = 16/(8pi^2) = {float(Tr_G0_equivariant):.10e}")
-flush_print(f"  G_0(p,p) = 1/(8pi^2)      = {float(tube):.10e}")
-flush_print()
-
-# Key check: V = Sigma_orb * I_16 (equivariance, Prop S7.6)
-# Sigma_orb = Delta_1 / chi_orb
-Sigma_orb = Delta_1 / chi_orb
-flush_print(f"  Sigma_orb = Delta_1/chi_orb = {float(Sigma_orb):.10e}")
-
-# The genus-2 exactness argument rests on three facts:
-# (1) V = Sigma_orb * I_16 (equivariance)
-# (2) For any matrix M: Tr[V*M*V] = Sigma_orb^2 * Tr[M] (linear algebra)
-# (3) Tr[G_0|VFix] = 16 * G_0(p,p) (equivariance of propagator)
-# Consequence: every genus-2 trace depends only on G_0(p,p),
-# NOT on the off-diagonal propagator structure.
-
-# Verify (1): Sigma_orb = Delta_1 / chi_orb (equipartition, Prop S7.6)
-# Cross-check: the per-sector self-energy must satisfy the operator-norm bound
-# tube * |Sigma_orb| < spectral radius (rho), ensuring convergence
-check("Equivariant self-energy: tube * Sigma_orb < rho (operator-norm-consistent)",
-      tube * abs(Sigma_orb) < spectral_radius,
-      f"tube*Sigma = {float(tube * abs(Sigma_orb)):.6e}, rho = {float(spectral_radius):.6e}")
-
-# Verify (3) structurally: 16 * G_0(p,p) consistent with trace
-check("Tr[G_0|VFix] = 16 * tube = 16/(8pi^2)",
-      abs(Tr_G0_equivariant - 16 * tube) < 1e-30,
-      f"16*tube = {float(16*tube):.10e}")
-
-# --- GENUS-2 EXACTNESS: sep/ns decomposition and operator-norm bound ---
-# The equivariance V = Sigma_orb * I_16 reduces genus-2 to two channels:
-#   Separating: Delta_2^sep = -Delta_1^2 / (8*pi^2)
-#   Non-separating: Delta_2^ns = +Delta_1^3 / (8*pi^2)
-#   Total: Delta_2 = Delta_2^sep + Delta_2^ns = -Delta_1^2*(1-Delta_1)/(8*pi^2)
-# Separately, the scattering amplitudes delta_g = (1/16) sum_w C(4,w)*(mu_w/(8pi^2))^g
-# provide bounds: |Delta_g| <= rho^g for g >= 2 (operator-norm bound, Lemma S7.12).
-
-Delta_2_sep = -Delta_1**2 / (8 * pi**2)
-Delta_2_ns = Delta_1**3 / (8 * pi**2)
-
-flush_print(f"\n  Delta_2^sep (separating)     = {float(Delta_2_sep):+.10e}")
-flush_print(f"  Delta_2^ns  (non-separating) = {float(Delta_2_ns):+.10e}")
-flush_print(f"  Delta_2^sep + Delta_2^ns     = {float(Delta_2_sep + Delta_2_ns):+.10e}")
-flush_print(f"  Delta_2 (scalar formula)     = {float(Delta_2_scalar):+.10e}")
-
-check("Sep/ns decomposition: Delta_2^sep + Delta_2^ns == Delta_2",
-      abs((Delta_2_sep + Delta_2_ns) - Delta_2_scalar) < 1e-30,
-      f"|diff| = {float(abs((Delta_2_sep + Delta_2_ns) - Delta_2_scalar)):.2e}")
-
-# operator-norm bound: |Delta_2| < rho^2 (Lemma S7.12)
+# Scattering amplitudes delta_g from the Krawtchouk eigenvalues:
+# delta_g = (1/16) * sum_w C(4,w) * (tube * lambda_w)^g,
+# where lambda_w are the full Gram eigenvalues (lam[w]). Each amplitude
+# is bounded by rho^g, rho = spectral radius computed in Section 3.
 rho_val = spectral_radius
-check("operator-norm bound: |Delta_2| < rho^2",
-      abs(Delta_2_scalar) < rho_val**2,
-      f"|Delta_2| = {float(abs(Delta_2_scalar)):.2e}, rho^2 = {float(rho_val**2):.2e}")
-
-# Scattering amplitudes delta_g from the Krawtchouk eigenvalues
-# delta_g = (1/16) * sum_w C(4,w) * (tube * lambda_w)^g  [eq S7.10]
-# where lambda_w are the full Gram eigenvalues (lam[w])
 for g in [1, 2, 3]:
     delta_g = sum(binomial(4, w) * (tube * lam[w])**g for w in range(5)) / 16
     flush_print(f"  delta_{g} (scattering) = {float(delta_g):+.10e}, |delta_{g}| = {float(abs(delta_g)):.2e}, rho^{g} = {float(rho_val**g):.2e}")
     check(f"Scattering bound: |delta_{g}| <= rho^{g}",
           abs(delta_g) <= rho_val**g,
           f"|delta_{g}| = {float(abs(delta_g)):.2e}")
-
-# Verify the scalar-model Delta_2 formula numerically
-Delta_2_check = -Delta_1**2 * (1 - Delta_1) / (8 * pi**2)
-check("Delta_2 = -Delta_1^2(1-Delta_1)/(8pi^2)",
-      abs(Delta_2_check - Delta_2_scalar) < 1e-30,
-      f"value = {float(Delta_2_check):+.10e}")
-
-# Channel-model interval: genus-2 partial sum +- genus>=3 tail bound.
-# CONDITIONAL on the separating/non-separating channel model (H1); the
-# theorem-tier (unconditional) interval is the wider symmetric
-# I_op = [137.03596, 137.03607] = 137 + Delta_1 +- rho^2/(1-rho).
-genus2_partial = N4_K + Delta_1 + Delta_2_scalar
-genus3_tail_bound = spectral_radius**3 / (1 - spectral_radius)
-born_lower = float(genus2_partial - genus3_tail_bound)
-born_upper = float(genus2_partial + genus3_tail_bound)
-
-flush_print(f"\n  Partial sum through g=2   = {float(genus2_partial):.10f}")
-flush_print(f"  Genus >= 3 tail bound     = {float(genus3_tail_bound):.2e}")
-flush_print(f"  Channel-model interval    = [{born_lower:.7f}, {born_upper:.7f}]")
-flush_print(f"  CODATA alpha^-1           = {float(alpha_inv_CODATA):.10f}")
-
-codata_in_interval = born_lower < float(alpha_inv_CODATA) < born_upper
-check("CODATA inside conditional channel-model (g<=2) interval",
-      codata_in_interval,
-      f"[{born_lower:.7f}, {born_upper:.7f}] contains {float(alpha_inv_CODATA):.10f}")
-
-check("Genus >= 3 tail bound < 3.8e-7",
-      genus3_tail_bound < 3.8e-7,
-      f"rho^3/(1-rho) = {float(genus3_tail_bound):.2e}")
 
 flush_print()
 

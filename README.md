@@ -5,17 +5,20 @@
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kootru-repo/gap-protected-spectral-invariants/blob/main/reproduce.ipynb)
 
 Reproducible verification code for the paper *Gap-protected spectral
-invariants on T^d/Z_2: dimensional rigidity at d = 4*
-(archived at [doi:10.5281/zenodo.20597196](https://doi.org/10.5281/zenodo.20597196)).
+invariants on T^d/Z_2: dimensional rigidity and spectral determination at d = 4*
+(archived at [doi:10.5281/zenodo.20597195](https://doi.org/10.5281/zenodo.20597195)).
 
-**Always test against `main`.** This branch is the canonical, continuously updated version: it is the code the paper points to, and CI re-runs the full suite on it on every commit. There is deliberately no pinned release or tagged version to track down; a fixed tag would freeze you to older, possibly superseded code, so `main` is the single source of the current, corrected checks. The Zenodo DOI above archives the paper itself (PDFs), not a code snapshot to run.
+**Always test against `main`.** This branch is the canonical, continuously updated version: it is the code the paper points to, and CI re-runs the full suite on it on every commit. There is deliberately no pinned release or tagged version to track down; a fixed tag would freeze you to older, possibly superseded code, so `main` is the single source of the current, corrected checks. The Zenodo DOI above archives the paper (with the deposit's script snapshot), not the version to run.
 
 Every numerical and structural claim in the paper is recomputed here from
 first principles: exact lattice enumeration, closed forms, high-precision
 `mpmath`, cyclotomic roots, and an exhaustive crystallographic sweep. Among
 the verified results: the mode count `N_4(5) = 137 = 1 + 8 + 128`, the
 dimensional rigidity `2d = 2^{d-1}` (unique at `d = 4`), the spectral
-radius `rho < 7.2e-3`, and the `K*(d)` saturation thresholds for `d = 2..8`.
+radius `rho < 7.2e-3`, the `K*(d)` saturation thresholds for `d = 2..8`,
+the prime-family classification (alignment `d = p^(d-2)`, solutions
+`(2,4)` and `(3,3)`), and the determinant-16 enumeration behind the
+spectral-determination theorem.
 
 Three ways to check the results, from least to most involvement. The
 computation is never on your machine unless you want it to be.
@@ -38,7 +41,8 @@ The **Open in Colab** badge runs `reproduce.ipynb` on Google's servers.
 Choose *Runtime -> Run all*: it clones this repository, installs the
 dependencies, recomputes each headline number against the paper (equation
 and theorem numbers shown next to each), and then runs the **full
-933-check suite** -- the same `run_all.py` the CI runs. This is the live,
+verification suite** (688 counted checks, plus the two sweeps and the
+determinant-16 enumeration) -- the same `run_all.py` the CI runs. This is the live,
 from-source re-run, including the parts too heavy for an in-browser kernel
 (the crystallographic sweep over the bundled CARAT catalogue and the
 adversarial battery). Nothing runs on your machine.
@@ -89,17 +93,17 @@ clean. Force the rich view anywhere with `VERIFY_RICH=1`.
 | `verify_krein.py` | Krawtchouk eigenvalues `mu_w` and the exact theta identities |
 | `classify_crystallographic.py` | Kissing numbers and the integrality-boundary lattices |
 | `verify_computational.py` | Gram ranks, shell counts, dynamical eigenvalues |
+| `verify_prime_family.py` | Prime-family classification: alignment `d = p^(d-2)`, solutions `(2,4)` and `(3,3)` |
+| `verify_theta_determination.py` | Determinant-16 enumeration behind the spectral-determination theorem |
 | `substrate-sweep/substrate_sweep.py` | `T^4/Z_2` unique over the signed-permutation group `W(B_4)` |
 | `substrate-sweep/carat_sweep.py` | `T^4/Z_2` unique over all 227 four-dimensional crystal classes |
 | `adversarial/run_all.py` | Falsification battery over the decomposition and substrate claims |
-| `verify_all_values.py` | Independent recomputation of every printed value |
 
 ## Layout
 
 ```
 .
 |- verify*.py, classify_crystallographic.py   primary checks
-|- verify_all_values.py                       definitive value recomputation
 |- run_all.py                                 top-level runner (CI entry point)
 |- adversarial/                               falsification battery
 |- substrate-sweep/                           227-class and W(B_4) sweeps

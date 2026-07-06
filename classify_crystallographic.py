@@ -241,7 +241,7 @@ print("\n  Groups with isolated fixed points on T^4:")
 print(f"  {'Group':>8}  {'|G|':>4}  {'chi_orb':>8}  {'= 8?':>5}  {'Lattice':>12}")
 print("  " + "-" * 50)
 
-# Known values (verified in SI Appendix Table S2.1)
+# Known values (verified in Supplementary material Table S2.1)
 group_data = [
     ("Z_2",  2,  8, "Z^4"),
     ("Z_3",  3,  6, "A_2 x A_2"),
@@ -638,7 +638,7 @@ check("All Z_n (n>=3) have chi_orb <= 6 < 8",
       all(chi_orb_Zn(n) <= 6 for n in [3, 4, 5, 6, 8, 10, 12]))
 
 # Kissing numbers (minimal-shell multiplicity, scale-invariant) - these are the
-# exact values reported in the SI substrate selection (lattice selection layer).
+# exact values reported in the SM substrate selection (lattice selection layer).
 # Only Z^4 has kissing = chi_orb = 8; the reducible competitors cannot reach 8
 # at ANY relative scaling of their factors.
 from itertools import product as _iproduct
@@ -682,7 +682,7 @@ check("two-block products miss kissing 8 ({6,12} and {2,12,14})",
 # The kissing test alone is therefore weaker than the integral one; the
 # INTEGRALITY BOUNDARY section below shows this case even reproduces the
 # full count pattern (N = 137) and is excluded only by Gram integrality
-# (SI, Lemma unit-shell / Remark integrality-boundary).
+# (SM, Lemma unit-shell / Remark integrality-boundary).
 check("A_2+Z+Z(c) reaches kissing 8 at aligned scaling (6+2)",
       kiss_A2 + kiss_Z1 == 8)
 check("only Z^4 has kissing = 8 among the irreducible substrate candidates",
@@ -691,7 +691,7 @@ check("only Z^4 has kissing = 8 among the irreducible substrate candidates",
 
 # ============================================================
 # INTEGRALITY BOUNDARY
-# (SI: Lemma unit-shell, Remark integrality-boundary)
+# (SM: Lemma unit-shell, Remark integrality-boundary)
 # ============================================================
 print("\n" + "=" * 70)
 print("INTEGRALITY BOUNDARY: unit-shell splitting + tuned coincidences")
@@ -878,10 +878,35 @@ check("Z_2 impostor on A_2+Z+Z(m): full pattern N=137 exactly at m=5 "
 _r1, _K, _w = z2_impostor(5)
 check("Z_2 impostor detail: r(1)=8, K*=7, window=128, N=137",
       (_r1, _K, _w) == (8, 7, 128) and 1 + _r1 + _w == 137)
+
+# First-shell determination corollary (SM): the impostor matches the pair
+# (lambda_1, m_1) = (1, 4) of T^4/Z_2 but the two orbifolds separate at the
+# second eigenvalue, r_M(2) = 12 against r_{Z^4}(2) = 24 (m_2 = 6 vs 12).
+def _r_M(m, k):
+    B = int(math.isqrt(k)) + 2
+    n = 0
+    for a in range(-B, B + 1):
+        for b in range(-B, B + 1):
+            qh = a * a + a * b + b * b
+            if qh > k:
+                continue
+            for z1 in range(-B, B + 1):
+                q1 = qh + z1 * z1
+                if q1 > k:
+                    continue
+                for z2 in range(-B, B + 1):
+                    if q1 + m * z2 * z2 == k:
+                        n += 1
+    return n
+_rZ4_2 = sum(1 for v in iproduct(range(-2, 3), repeat=4)
+             if sum(x * x for x in v) == 2)
+check("first-shell determination: impostor matches (1,4) via r_M(1)=8, "
+      "separates at level 2: r_M(2)=12 vs r_Z4(2)=24",
+      _r_M(5, 1) == 8 and _r_M(5, 2) == 12 and _rZ4_2 == 24)
 # Polarisation of the unit Loeschian form: 2<u,v> = L(u+v)-L(u)-L(v).
 # For the unit vectors (1,0),(0,1): L(1,1)-1-1 = 1, an ODD integer, so
 # <u,v> = 1/2: the unit-normalised hexagonal block is not integral, and
-# SI Lemma unit-shell excludes both families over integral lattices.
+# SM Lemma unit-shell excludes both families over integral lattices.
 _L = lambda a, b: a * a + a * b + b * b
 check("unit hexagonal block is non-integral: 2<u,v> = L(1,1)-2 = 1 (odd)",
       _L(1, 1) - _L(1, 0) - _L(0, 1) == 1)

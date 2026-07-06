@@ -1,8 +1,8 @@
 """
-verify.py -- 298 checks for the paper.
+verify.py -- 257 checks for the gap-invariant paper.
 Covers Jacobi shell counts, three-sector decomposition, K* saturation,
-geometric correction Delta_1, genus expansion, Krawtchouk eigenvalues,
-Z_3 negative theorem, dimensional rigidity.
+geometric correction Delta_1, Neumann tail and operator-norm interval,
+Krawtchouk eigenvalues, Z_3 negative theorem, dimensional rigidity.
 """
 
 import math
@@ -57,7 +57,7 @@ def N4_direct(K):
 
 # ============================================================
 print("=" * 65)
-print("VERIFICATION SUITE: Spectral Coupling Paper")
+print("VERIFICATION SUITE: Gap-Protected Spectral Invariants")
 print("=" * 65)
 
 
@@ -373,130 +373,25 @@ E_Theta_numerical = I1 + I2
 check(f"E_Theta (numerical) = {E_Theta_numerical:.6f} matches algebraic {E_Theta:.6f}",
       abs(E_Theta_numerical - E_Theta) < 1e-4)
 
-# CODATA 2022 value of alpha^{-1} (NIST, 0.15 ppb uncertainty).
-CODATA = 137.035999177
-genus1 = 137 + Delta_1
-disc_ppm = abs(genus1 - CODATA) / CODATA * 1e6
-# Tolerance 0.15 ppm: genus-1 approximation omits O(Delta_1^2) ~ 1e-3 ppm;
-# 0.15 ppm threshold is ~100x the omitted correction.
-check(f"Genus-1: 137 + Delta_1 = {genus1:.6f} (within 0.12 ppm of CODATA)",
-      disc_ppm < 0.15)
-
-check(f"Closer than Wyler (Wyler = 137.03608, disc = 0.59 ppm)",
-      abs(genus1 - CODATA) < abs(137.03608 - CODATA))
-
-
 # ============================================================
-# SECTION 8: GENUS EXPANSION
+# SECTION 8: NEUMANN BOUNDS AND OPERATOR-NORM INTERVAL
 # ============================================================
-print("\n8. GENUS EXPANSION")
+print("\n8. NEUMANN BOUNDS AND OPERATOR-NORM INTERVAL")
 
-# Genus-2 correction
-Delta_2 = -Delta_1**2 * (1 - Delta_1) / (8 * math.pi**2)
-check(f"Delta_2 = {Delta_2:.3e} (approximately -1.584e-5)",
-      abs(Delta_2 - (-1.584e-5)) < 1e-7)
-check("Delta_2 < 0 (re-scattering reduces capacity)", Delta_2 < 0)
+# Smooth action: 137 + Delta_1 (closed form, Section 7)
+smooth_action = N4(5) + Delta_1
 
-genus2 = genus1 + Delta_2
-disc_genus2 = abs(genus2 - CODATA) / CODATA * 1e6
-check(f"Genus-2: {genus2:.9f} (improves over genus-1)",
-      disc_genus2 < disc_ppm)
+# Closed-form spectral radius rho = ln2/pi^4 (SM Prop. prop:Zh-closed)
+rho = math.log(2) / math.pi**4
+check(f"Spectral radius rho = ln2/pi^4 = {rho:.4e} < 7.2e-3", rho < 7.2e-3)
 
-# Accounts for 99% of genus-1 discrepancy
-genus1_disc = genus1 - CODATA
-genus2_disc = genus2 - CODATA
-fraction_resolved = 1 - abs(genus2_disc / genus1_disc)
-check(f"Genus-2 accounts for {fraction_resolved*100:.0f}% of genus-1 discrepancy",
-      fraction_resolved > 0.95)
+# Neumann tail bound rho^2/(1-rho)
+tail = rho**2 / (1 - rho)
+check(f"Neumann tail rho^2/(1-rho) = {tail:.3e} < 5.3e-5", tail < 5.3e-5)
 
-# Geometric factorisation (Proposition geom-factor)
-eps_bare = Delta_1 * (1 - Delta_1) / (8 * math.pi**2)
-check(f"eps*_bare = {eps_bare:.4e} (approximately 4.395e-4)",
-      abs(eps_bare - 4.395e-4) < 1e-6)
-
-# Inductive check: Delta_2 = -eps_bare * Delta_1
-Delta_2_from_induction = -eps_bare * Delta_1
-check(f"Delta_2 via induction = {Delta_2_from_induction:.3e} (matches direct)",
-      abs(Delta_2_from_induction - Delta_2) / abs(Delta_2) < 1e-12)
-
-# Delta_3 = (-eps_bare)^2 * Delta_1
-Delta_3 = (-eps_bare)**2 * Delta_1
-check(f"Delta_3 = {Delta_3:.3e} (approximately 6.96e-9)",
-      abs(Delta_3 - 6.96e-9) < 1e-10)
-
-# Bare geometric sum (before self-energy dressing)
-bare_sum = Delta_1 / (1 + eps_bare)
-check(f"Bare geometric sum = {bare_sum:.12f}",
-      abs(bare_sum - 0.035999245) < 1e-8)
-
-# g<=2 partial sum: 0.44 ppb from CODATA
-D_g2 = 137 + Delta_1 + Delta_2
-disc_g2_ppb = abs(D_g2 - CODATA) / CODATA * 1e9
-# Tolerance 0.5 ppb: omitted g>=3 terms bounded by rho^3/(1-rho) < 5.2e-7,
-# which contributes < 4 ppb. The 0.5 ppb threshold tests g<=2 accuracy.
-check(f"D_orb(g<=2) = {D_g2:.9f} ({disc_g2_ppb:.2f} ppb from CODATA)",
-      disc_g2_ppb < 0.5)
-
-# Spectral radius rho = max_w |tube * lambda_w| = 0.007100719 (computed in
-# verify_spectral_bounds.py from Mellin integrals of theta functions at 30-digit
-# precision). We use the paper's upper bound rho < 0.008 (Lemma S7.12) here;
-# the actual value 0.00710 is well within this bound.
-rho_bound = 0.008
-rho3_bound = rho_bound**3 / (1 - rho_bound)
-check(f"g>=3 bound = {rho3_bound:.2e} < 5.2e-7",
-      rho3_bound < 5.2e-7)
-
-# Unconditional (sign-free) operator-norm interval: 137 + Delta_1 +/- rho^2/(1-rho).
-# Model-independent operator-norm interval (Lemma S7, claim iii); it uses only the
-# magnitude bound, not the channel-model sign. Paper states [137.03596, 137.03607]
-# (the actual rho = 0.00710 rounded outward).
-rho_actual = 0.007100719
-rho2_bound = rho_actual**2 / (1 - rho_actual)
-uncond_lo = genus1 - rho2_bound
-uncond_hi = genus1 + rho2_bound
-check(f"Unconditional interval [{uncond_lo:.7f}, {uncond_hi:.7f}] inside paper's [137.03596, 137.03607]",
-      137.03596 <= uncond_lo and uncond_hi <= 137.03607)
-check("CODATA in unconditional operator-norm interval",
-      uncond_lo <= CODATA <= uncond_hi)
-
-# CODATA inside the tightened interval (CONDITIONAL: uses the channel-model sign of Delta_2)
-interval_lo = D_g2 - rho3_bound
-interval_hi = D_g2 + rho3_bound
-check(f"CODATA in tightened (conditional) interval [{interval_lo:.9f}, {interval_hi:.9f}]",
-      interval_lo <= CODATA <= interval_hi)
-
-interval_width_ppb = (interval_hi - interval_lo) / CODATA * 1e9
-check(f"Tightened interval width = {interval_width_ppb:.1f} ppb (>100x narrower)",
-      interval_width_ppb < 8.0)
-
-# All-genus resummation (now proved via geometric factorisation + self-energy)
-eps_star = Delta_1 * (1 - Delta_1) * (1 + Delta_1/chi_orb) / (8 * math.pi**2)
-check(f"eps* = eps_bare*(1+Sigma_orb) = {eps_star:.4e}",
-      abs(eps_star - eps_bare * (1 + Delta_1/chi_orb)) < 1e-15)
-
-resum = 137 + Delta_1 / (1 + eps_star)
-disc_resum_ppb = abs(resum - CODATA) / CODATA * 1e9
-# Tolerance 0.1 ppb: the all-genus resummation is exact to the stated precision;
-# 0.1 ppb threshold is ~3x the actual discrepancy (~0.03 ppb).
-check(f"All-genus (proved): {resum:.9f} (within 0.03 ppb of CODATA)",
-      disc_resum_ppb < 0.1)
-
-# Dyson value inside tightened interval
-check(f"Dyson value {resum:.9f} inside tightened interval",
-      interval_lo <= resum <= interval_hi)
-
-# Fredholm convergence bound
-fredholm_bound = chi_orb * Delta_1 / (8 * math.pi**2)
-check(f"Fredholm bound = {fredholm_bound:.4f} < 1 (formal ratio)",
-      fredholm_bound < 1)
-check(f"Fredholm bound = {fredholm_bound:.4f} < 0.01 (strong suppression)",
-      fredholm_bound < 0.01)
-
-# Sigma from CODATA
-sigma_from_codata = abs(resum - CODATA) / 21e-9
-check(f"All-genus deviation = {sigma_from_codata:.2f} sigma from CODATA",
-      sigma_from_codata < 1)
-
+# Operator-norm interval: 137 + Delta_1 +/- tail inside the printed interval
+check(f"Operator-norm interval [{smooth_action - tail:.7f}, {smooth_action + tail:.7f}] inside [137.03596, 137.03607]",
+      137.03596 <= smooth_action - tail and smooth_action + tail <= 137.03607)
 
 # ============================================================
 # SECTION 9: CONNES SPECTRAL ACTION CLOSURE
@@ -578,11 +473,7 @@ check(f"Jacobi abstruse: theta_3^4 - theta_2^4 - theta_4^4 = {th3_j**4 - th2_j**
 print("\n12. TABLE VALUES")
 
 check("Integer: 137", N4(5) == 137)
-check(f"Genus-1 smooth action: {genus1:.12f}", abs(genus1 - 137.036015073880) < 1e-10)
-check(f"Genus-2 bare partial sum: {genus2:.9f}", abs(genus2 - 137.035999238) < 1e-9)
-check(f"All-genus: {resum:.9f}", abs(resum - 137.035999173) < 1e-8)
-# CODATA 2022 (NIST): alpha^{-1} = 137.035999177(21)
-print(f"  CODATA: {CODATA} +/- 21e-9")
+check(f"Smooth action: {smooth_action:.12f}", abs(smooth_action - 137.036015073880) < 1e-10)
 
 
 # ============================================================
@@ -624,27 +515,20 @@ Delta1_orbifold = F_0 / 2 + gamma_E / 2
 check(f"All-orbifold: F_0/2 + gamma_E/2 = {Delta1_orbifold:.4f}",
       abs(Delta1_orbifold - 0.1623) < 0.001)
 
-# Krawtchouk bound excludes all-covering and all-orbifold.
-# rho = spectral radius < 0.008 (Lemma S7.12; computed as 0.00710 in
-# verify_spectral_bounds.py). Use rho_bound from earlier in this script.
-rho_sq = rho_bound**2
-Delta2_gap1 = -Delta1_gap1**2 * (1 - Delta1_gap1) / (8 * math.pi**2)
-Delta2_covering = -Delta1_covering**2 * (1 - Delta1_covering) / (8 * math.pi**2)
-Delta2_orbifold = -Delta1_orbifold**2 * (1 - Delta1_orbifold) / (8 * math.pi**2)
-check(f"Gap 1: |Delta_2| = {abs(Delta2_gap1):.2e} < rho^2 = {rho_sq:.2e}",
-      abs(Delta2_gap1) < rho_sq)
-check(f"All-covering: |Delta_2| = {abs(Delta2_covering):.2e} >> rho^2 (factor {abs(Delta2_covering)/rho_sq:.0f}x)",
-      abs(Delta2_covering) > rho_sq)
-check(f"All-orbifold: |Delta_2| = {abs(Delta2_orbifold):.2e} >> rho^2 (factor {abs(Delta2_orbifold)/rho_sq:.0f}x)",
-      abs(Delta2_orbifold) > rho_sq)
-
-# Gap 1 uniqueness: only Gap 1 gives alpha^{-1} in correct range
-alpha_gap1 = 137 + Delta1_gap1
-alpha_covering = 137 + Delta1_covering
-check(f"Gap 1: alpha^{{-1}} = {alpha_gap1:.6f} (within 1 ppm of CODATA)",
-      abs(alpha_gap1 - 137.036015) < 0.0002)
-check(f"All-covering: alpha^{{-1}} = {alpha_covering:.3f} (~2100 ppm off)",
-      alpha_covering > 137.3)
+# Selection (prop:delta1-unique): each candidate's leading second-order
+# coefficient is Delta_1^2/(8 pi^2) (operator coincident-point propagator
+# G_0 = 1/8pi^2, eq:tube). Only the smallest-Delta_1 completion clears the
+# operator bound rho^2, with rho = ln2/pi^4 from Section 8.
+rho_sq = rho**2
+D2lead_gap1 = Delta1_gap1**2 / (8 * math.pi**2)
+D2lead_covering = Delta1_covering**2 / (8 * math.pi**2)
+D2lead_orbifold = Delta1_orbifold**2 / (8 * math.pi**2)
+check(f"Gap 1: Delta_1^2/8pi^2 = {D2lead_gap1:.2e} < rho^2 = {rho_sq:.2e}",
+      D2lead_gap1 < rho_sq)
+check(f"All-covering: Delta_1^2/8pi^2 = {D2lead_covering:.2e} >> rho^2 (factor {D2lead_covering/rho_sq:.0f}x)",
+      D2lead_covering > rho_sq)
+check(f"All-orbifold: Delta_1^2/8pi^2 = {D2lead_orbifold:.2e} >> rho^2 (factor {D2lead_orbifold/rho_sq:.0f}x)",
+      D2lead_orbifold > rho_sq)
 
 # Smooth-manifold limit: |G|=1 recovers F_0 + gamma_E (no orbifold halving)
 Delta1_smooth = F_0 + gamma_E
@@ -666,92 +550,6 @@ check(f"Unified formula (numerical): FP[Phi(s)] = {Delta1_unified:.6f} = Delta_1
 check(f"|G|*(I1_orb+I2_orb) = {G_order*(I1_orb+I2_orb):.6f} = E_Theta = {E_Theta:.6f}",
       abs(G_order * (I1_orb + I2_orb) - E_Theta) < 1e-4)
 
-
-# ============================================================
-# WEAK MIXING ANGLE (Corollary cor:weinberg-angle)
-# ============================================================
-print("\n--- Weak mixing angle ---")
-
-sin2_thetaW = 3.0 / chi_orb
-check(f"sin^2(theta_W) = 3/chi_orb = {sin2_thetaW}", sin2_thetaW == 3.0/8)
-check("chi_orb/3 = 8/3 (per-generation charge trace)",
-      abs(chi_orb / 3.0 - 8.0/3) < 1e-15)
-print("  Three couplings (alpha, alpha_s, sin^2 theta_W) from one orbifold.")
-
-print("\n--- Falsification windows ---")
-
-# All-genus falsification: |prediction - measured| < 0.3 ppb (scheme bound)
-scheme_bound_ppb = 0.3
-scheme_bound_abs = scheme_bound_ppb * 1e-9 * 137.036  # ~4.1e-11
-check(f"All-genus prediction {resum:.9f} inside 0.3 ppb window",
-      abs(resum - 137.035999173) < scheme_bound_abs)
-
-# CODATA central value inside 0.3 ppb window of prediction
-check(f"CODATA {CODATA} inside 0.3 ppb window of prediction",
-      abs(CODATA - resum) < scheme_bound_abs)
-
-# Prediction-CODATA difference in ppb
-diff_ppb = abs(resum - CODATA) / CODATA * 1e9
-check(f"All-genus vs CODATA: {diff_ppb:.2f} ppb (< 0.3 ppb)",
-      diff_ppb < 0.3)
-
-# Three-tier hierarchy consistency
-check("Tier hierarchy: integer < genus-1 < all-genus precision",
-      abs(137 - CODATA) > abs(genus1 - CODATA) > abs(resum - CODATA))
-
-print("\n--- Self-energy equipartition (Prop. S7.6) ---")
-
-# Sigma_orb = Delta_1 / chi_orb (Proposition S7.6)
-Sigma_orb = Delta_1 / chi_orb
-check(f"Sigma_orb = Delta_1/chi_orb = {Sigma_orb:.10f}",
-      abs(Sigma_orb * chi_orb - Delta_1) < 1e-15)
-
-# Z_2^4 transitivity: 16 fixed points, all equivalent
-# Kawasaki: effective multiplicity = |Fix|/|G| = 16/2 = 8
-check("Kawasaki effective multiplicity: |Fix|/|G| = 16/2 = chi_orb = 8",
-      16 // 2 == chi_orb)
-
-# All-orders dressing factor
-dressing = 1 + Delta_1 / chi_orb
-check(f"All-orders dressing: 1 + Delta_1/chi_orb = {dressing:.10f}",
-      abs(dressing - 1.004501875) < 1e-8)
-
-# eps* decomposition: three factors with distinct origins
-eps_tube = Delta_1 / (8 * math.pi**2)       # tube propagator * vertex
-eps_sep = 1 - Delta_1                        # separating structure
-eps_dress = 1 + Delta_1 / chi_orb            # self-energy dressing
-eps_product = eps_tube * eps_sep * eps_dress
-check(f"eps* = tube*sep*dress = {eps_product:.6e} (= {eps_star:.6e})",
-      abs(eps_product - eps_star) / eps_star < 1e-8)
-
-# Self-energy dressing truncation error (Theorem allgenus-resum)
-trunc_error = eps_bare * Sigma_orb**2
-D_trunc_ppb = Delta_1 * trunc_error / (1 + eps_star)**2 / CODATA * 1e9
-check(f"Dressing truncation: {trunc_error:.2e} < 1e-8",
-      trunc_error < 1e-8)
-check(f"Dressing truncation in ppb: {D_trunc_ppb:.4f} < 0.003",
-      D_trunc_ppb < 0.003)
-
-# Exact Dyson vs first-order dressing
-eps_exact_dyson = eps_bare / (1 - Sigma_orb)
-D_exact_dyson = 137 + Delta_1 / (1 + eps_exact_dyson)
-dyson_diff_ppb = abs(D_exact_dyson - resum) / CODATA * 1e9
-check(f"1st-order vs exact Dyson: {dyson_diff_ppb:.4f} ppb < 0.003",
-      dyson_diff_ppb < 0.003)
-
-# Geometric g>=3 tail (scheme-dependence within proved factorisation)
-g3_geom = eps_bare**2 * Delta_1 / (1 + eps_bare)
-g3_ppb = g3_geom / CODATA * 1e9
-check(f"Geometric g>=3 tail: {g3_geom:.2e} < 7e-9",
-      g3_geom < 7e-9)
-check(f"Geometric g>=3 tail in ppb: {g3_ppb:.4f} < 0.06",
-      g3_ppb < 0.06)
-
-# Neumann-series g>=3 bound in ppb (using paper's rho < 0.008; the computed
-# rho = 0.00710 from verify_spectral_bounds.py gives a tighter 2.7 ppb).
-born_g3_ppb = rho3_bound / CODATA * 1e9
-check(f"Neumann g>=3 bound: {born_g3_ppb:.2f} ppb < 4",
-      born_g3_ppb < 4)
 
 print("\n--- Tube propagator (Eq. S-tube) ---")
 
@@ -842,7 +640,7 @@ check(f"lambda_4 = |Fix|^2 = {Fix**2}", lam[4] == Fix**2)
 # lambda_0 = N_4 + chi_orb - 1 (identity sector)
 check(f"lambda_0 = N_4 + chi_orb - 1 = {N4(5) + chi_orb - 1}",
       lam[0] == N4(5) + chi_orb - 1)
-# SI prop:gram-cascade(iii): lambda_0(K) = 16*N_4(floor(K/4)) equals
+# SM prop:gram-cascade(iii): lambda_0(K) = 16*N_4(floor(K/4)) equals
 # N_4(K)+chi_orb-1 only at K in {1,5}; sweep K=1..8 to confirm.
 _lam0_hold = [K for K in range(1, 9)
               if 16 * N4(K // 4) == N4(K) + chi_orb - 1]
@@ -850,18 +648,6 @@ check("lambda_0(K) = N_4(K)+chi_orb-1 holds exactly at K in {1,5} (K=1..8)",
       _lam0_hold == [1, 5])
 # All eigenvalues positive (required for positive-definite Gram matrix)
 check("All Gram eigenvalues positive", all(l > 0 for l in lam))
-
-# Lattice approximation to eps*
-eps_lattice = Delta_1 * (1 - 5/137) * (1 + 5/(chi_orb * 137)) / (8 * math.pi**2)
-rel_err = abs(eps_lattice - eps_star) / eps_star
-check(f"Gram lattice approx: |eps_lattice - eps*|/eps* = {rel_err:.4e} < 0.001",
-      rel_err < 0.001)
-
-# Lattice approx gives alpha^-1 within CODATA uncertainty
-alpha_lattice = 137 + Delta_1 / (1 + eps_lattice)
-diff_lattice_ppb = abs(alpha_lattice - resum) / resum * 1e9
-check(f"Lattice approx vs exact: {diff_lattice_ppb:.2f} ppb (< 0.15 = 1 sigma CODATA)",
-      diff_lattice_ppb < 0.15)
 
 
 # ============================================================
@@ -1119,9 +905,9 @@ check("Z_3 structural failure: (61-1-12)/9 = 48/9 != 6",
 
 
 # ============================================================
-# SECTION 17b: FIRST-SHELL OBSTRUCTION (Proposition first-shell)
+# SECTION 15: FIRST-SHELL OBSTRUCTION (Proposition first-shell)
 # ============================================================
-print("\n--- Section 17b: First-shell obstruction ---")
+print("\n--- Section 15: First-shell obstruction ---")
 
 # First-shell multiplicity on Z^d: r_{Z^d}(1) = 2d
 for d_test in range(1, 8):
@@ -1181,9 +967,9 @@ for p in [3, 4, 5, 6, 7]:
 
 
 # ============================================================
-# SECTION 18: UNIFORM GAP PROTECTION (Proposition uniform-gap)
+# SECTION 16: UNIFORM GAP PROTECTION (Proposition uniform-gap)
 # ============================================================
-print("\n--- Section 18: Uniform gap protection ---")
+print("\n--- Section 16: Uniform gap protection ---")
 
 # Helper: r_d(k) = number of representations of k as sum of d squares
 def r_d_direct(d, k):
@@ -1273,9 +1059,9 @@ check("d=4 is minimal dimension with uniform gap protection",
 
 
 # ============================================================
-# Section 19: Krawtchouk derivation from first principles
+# Section 17: Krawtchouk derivation from first principles
 # ============================================================
-print("\n--- Section 19: Krawtchouk derivation from first principles ---")
+print("\n--- Section 17: Krawtchouk derivation from first principles ---")
 
 # (i) Hamming constancy: G_{ab} depends only on d_H(a,b)
 # Verify by computing character sums for all pairs at K*=5

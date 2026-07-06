@@ -1,13 +1,14 @@
 """
-Computational Verification for SI Section S9
-=============================================
+Computational Verification for the SM computational section
+============================================================
 Implements Test A (spectral resolution thresholds) and Test B
 (crystallographic resolution interpretation) as described in
-SI Appendix, Section S9.
+the Supplementary material's computational-verification section
+(sec:computational; S8 in the current numbering).
 
 Requires only numpy. Run: python verify_computational.py
 
-Reproduces Table S9.1 and all intermediate checks.
+Reproduces the section's tables and all intermediate checks.
 """
 
 import numpy as np
@@ -287,7 +288,7 @@ def main():
 
     results_a = test_a([2, 3, 4, 5])
 
-    # Table S9.1
+    # SM computational-section table (spectral resolution thresholds)
     print(f"\n  {'d':>2} | {'|Fix|':>5} | {'chi':>4} | {'K*':>3} | "
           f"{'N_d(K*)':>8} | {'3-sec':>5} | {'r(1)=chi':>8} | {'Gap':>6}")
     print(f"  {'-'*2}-+-{'-'*5}-+-{'-'*4}-+-{'-'*3}-+-"

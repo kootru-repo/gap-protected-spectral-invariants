@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-verify_krein.py -- Verification checks for the Krein bridge (Section S7.6).
+verify_krein.py -- Verification checks for the Krein bridge (the essential
+self-adjointness subsection, sec:krein, of the SM inter-fixed-point section).
 
-Checks:
+Checks (28 total):
  1. Cheeger essential self-adjointness criterion: d=4 >= 4
  2. Indicial exponent nu_+ = 0 at l=0
  3. Indicial exponent nu_- = -2 at l=0
@@ -13,11 +14,15 @@ Checks:
  8. off-diagonal mu_2 = -2*G^(2)+G^(4) = 0 exactly (THEOREM; the old
     check value -1/(4000*pi) was a quadrature-cutoff artifact), plus
     closed forms Z^(4)(1) = -4 ln 2 and Z^(2)(1) = -2 ln 2
- 9. Fredholm bound consistency (conditional channel-model bracket)
-10. Delta_1 closed-form consistency
-11. r^4 = 1/2 (Jacobi abstruse identity at self-dual point)
-12. Heat-kernel character factorisation: lambda_w = B^w * A^{4-w}
-13. A = 2*theta_3(4i)
+ 9. Delta_1 closed-form consistency
+10. r^4 = 1/2 (Jacobi abstruse identity at self-dual point)
+11. Heat-kernel character factorisation: lambda_w = B^w * A^{4-w}
+12. A = 2*theta_3(4i)
+13+. Closed-form spectral radius rho = ln2/pi^4 (SM Prop.
+    prop:Zh-closed): Sturm-certificate theta-coefficient
+    identities exact to n = 3000, the five Z^(h)(1) values by
+    split-integral continuation vs closed forms (25+ digits),
+    mu_w closed forms and dominance, rho/tail/interval bounds.
 """
 
 import math
@@ -60,7 +65,7 @@ Delta_1 = F_0 + gamma_E / 2
 
 # ============================================================
 print(SEP)
-print("VERIFY KREIN BRIDGE (Section S7.6)")
+print("VERIFY KREIN BRIDGE (SM sec:krein)")
 print(SEP)
 print()
 
@@ -162,7 +167,7 @@ det_fred = 1.0
 for w in range(5):
     det_fred *= (1 - tube * lambda_w[w])**mult[w]
 
-# Tolerance 0.1: Fredholm determinant deviates from 1 by O(tube*lambda) ~ 0.008;
+# Tolerance 0.1: Fredholm determinant deviates from 1 by O(tube*lambda) ~ 7e-3;
 # 0.1 is a loose sanity check, not a precision claim.
 check("Fredholm determinant close to 1",
       abs(det_fred - 1) < 0.1,
@@ -203,29 +208,14 @@ check("Z^(2)(1) = -2 ln 2 = Z^(4)(1)/2 (theta3*theta4 = theta4(q^2)^2)",
       abs(Z2_val + 2 * _math.log(2)) < 1e-9,
       f"Z^(2)(1) = {Z2_val:.12f}")
 
-# --- Check 8: Fredholm bound ---
-# Channel-model bracket (CONDITIONAL on the channel model; the
-# theorem-tier unconditional interval is I_op = [137.03596, 137.03607]).
-# Fredholm bound: chi_orb * Delta_1 / (8*pi^2)
-fredholm_bound = chi_orb * Delta_1 / (8 * pi**2)
-D_lower = 137 + Delta_1 / (1 + fredholm_bound)
-D_upper = 137 + Delta_1  # genus-1 value (upper bound)
-# CODATA 2022: intentionally duplicated across scripts so each runs independently.
-# Used ONLY as an external comparison target, never as an input to a computed quantity.
-CODATA = 137.035999177
-
-check("CODATA in conditional channel-model bracket",
-      D_lower < CODATA < D_upper,
-      f"[{D_lower:.5f}, {D_upper:.6f}] contains {CODATA}")
-
-# --- Check 9: Delta_1 closed form ---
+# --- Check 8: Delta_1 closed form ---
 # Delta_1 is already computed from zeta'(2) at top of script.
 # Cross-check: 0.036 < Delta_1 < 0.037 (sanity)
 check("Delta_1 closed form in expected range",
       0.036 < Delta_1 < 0.037,
       f"Delta_1 = {Delta_1:.10f} (derived from zeta'(2) via mpmath)")
 
-# --- Check 10: r^4 = 1/2 (Jacobi abstruse identity) ---
+# --- Check 9: r^4 = 1/2 (Jacobi abstruse identity) ---
 # theta_3^4 = theta_2^4 + theta_4^4 (Jacobi)
 # At tau = i: theta_2(i) = theta_4(i), so theta_3^4 = 2*theta_4^4
 # Hence r = theta_4/theta_3 = 2^{-1/4}, r^4 = 1/2
@@ -243,7 +233,7 @@ check("r^4 = 1/2 (Jacobi abstruse identity)",
       abs(r**4 - 0.5) < 1e-10,
       f"r = {r:.10f}, r^4 = {r**4:.15f}")
 
-# --- Check 11: Heat-kernel factorisation ---
+# --- Check 10: Heat-kernel factorisation ---
 A_hk = th3 + th4
 B_hk = th3 - th4
 # H^{(h)} = theta_3^{4-h} * theta_4^h
@@ -262,12 +252,156 @@ check("Heat-kernel factorisation: lambda_w = B^w * A^{4-w}",
       all_factor_ok,
       f"A = {A_hk:.10f}, B = {B_hk:.10f}, B/A = {B_hk/A_hk:.10f}")
 
-# --- Check 12: A = 2*theta_3(4i) ---
+# --- Check 11: A = 2*theta_3(4i) ---
 q4 = math.exp(-4 * pi)
 th3_4i = 1 + 2 * sum(q4**(n*n) for n in range(1, 200))
 check("A = 2*theta_3(4i)",
       abs(A_hk - 2 * th3_4i) < 1e-10,
       f"A = {A_hk:.10f}, 2*theta_3(4i) = {2*th3_4i:.10f}")
+
+# ============================================================
+# Closed-form spectral radius rho = ln2/pi^4
+# (SM Proposition prop:Zh-closed). Four blocks:
+#  (a) the Sturm-certificate theta-coefficient identities, exact
+#      integer arithmetic to n = 3000 (bound: 512);
+#  (b) the five values Z^(h)(1) by direct split-integral
+#      continuation vs the closed forms, 25+ digits;
+#  (c) mu_w closed forms via the Krawtchouk transform, and the
+#      dominance inequality 28 ln 2 > 2 pi;
+#  (d) rho = ln2/pi^4 < 7.2e-3, tail < 5.3e-5, closed-form
+#      interval inside the printed [137.03596, 137.03607].
+# ============================================================
+
+# --- (a) coefficient certificates ---
+NMAX = 3000
+_t3 = [0] * (NMAX + 1); _t4 = [0] * (NMAX + 1)
+_t3[0] = 1; _t4[0] = 1
+_k = 1
+while _k * _k <= NMAX:
+    _t3[_k * _k] += 2
+    _t4[_k * _k] += 2 * (-1) ** _k
+    _k += 1
+
+def _conv(a, b):
+    c = [0] * (NMAX + 1)
+    for i, ai in enumerate(a):
+        if ai:
+            for j in range(0, NMAX + 1 - i):
+                if b[j]:
+                    c[i + j] += ai * b[j]
+    return c
+
+_T1 = _conv(_conv(_conv(_t3, _t3), _t3), _t4)   # theta_3^3 theta_4
+_T3 = _conv(_t3, _conv(_conv(_t4, _t4), _t4))   # theta_3 theta_4^3
+
+# theta_2(q^2)^2: exponents ((2a+1)^2+(2b+1)^2)/2, all signs of the
+# half-integer indices (multiplicity 1 per (a,b) in Z^2)
+_t2q2sq = [0] * (NMAX + 1)
+_a = 0
+while (2 * _a + 1) ** 2 <= 2 * NMAX:
+    _b = 0
+    while (2 * _a + 1) ** 2 + (2 * _b + 1) ** 2 <= 2 * NMAX:
+        _e = ((2 * _a + 1) ** 2 + (2 * _b + 1) ** 2) // 2
+        # index pairs (a,b), (-a-1,b), (a,-b-1), (-a-1,-b-1)
+        _t2q2sq[_e] += 4
+        _b += 1
+    _a += 1
+# theta_4(q^2)^2: exponent 2(u^2+v^2), sign (-1)^{u+v}
+_t4q2sq = [0] * (NMAX + 1)
+_u = -60
+for _u in range(-60, 61):
+    for _v in range(-60, 61):
+        _e = 2 * (_u * _u + _v * _v)
+        if _e <= NMAX:
+            _t4q2sq[_e] += (-1) ** (_u + _v)
+_LHS = _conv(_t2q2sq, _t4q2sq)
+
+def _chi4(n):
+    return 0 if n % 2 == 0 else (1 if n % 4 == 1 else -1)
+
+def _varpi(n):
+    tot = 0
+    d = 1
+    while d * d <= n:
+        if n % d == 0:
+            e = n // d
+            tot += _chi4(d) * _chi4(e) * e
+            if d != e:
+                tot += _chi4(e) * _chi4(d) * d
+        d += 1
+    return tot
+
+_cert1 = all(_LHS[n] == (4 * _varpi(n) if n % 2 == 1 else 0)
+             for n in range(1, NMAX + 1)) and _LHS[0] == 0
+check("certificate: theta_2(q^2)^2 theta_4(q^2)^2 = 4 sum varpi(n) q^n "
+      "(n <= 3000, Sturm bound 512)", _cert1)
+
+_cert2 = all(_T1[n] - _T3[n] == 2 * _LHS[n] for n in range(0, NMAX + 1))
+check("theta algebra: Theta_1 - Theta_3 = 2 theta_2(q^2)^2 theta_4(q^2)^2 "
+      "(n <= 3000)", _cert2)
+
+# Theta_1 + Theta_3 = 2 theta_4(q^4)^4
+_t4q4 = [0] * (NMAX + 1)
+_t4q4[0] = 1
+_k = 1
+while 4 * _k * _k <= NMAX:
+    _t4q4[4 * _k * _k] += 2 * (-1) ** _k
+    _k += 1
+_t4q4_4 = _conv(_conv(_conv(_t4q4, _t4q4), _t4q4), _t4q4)
+_cert3 = all(_T1[n] + _T3[n] == 2 * _t4q4_4[n] for n in range(0, NMAX + 1))
+check("theta algebra: Theta_1 + Theta_3 = 2 theta_4(q^4)^4 (n <= 3000)",
+      _cert3)
+
+# --- (b) the five values by split-integral continuation ---
+mp.dps = 35
+def _Zh1(h):
+    # Z^(h)(1) = int_0^inf (Theta_h(t) - 1) dt,
+    # Theta_h(t) = theta_3(e^-t)^{4-h} theta_4(e^-t)^h, h >= 1;
+    # use Jacobi inversion for t < 1 for numerical stability.
+    def f(t):
+        if t >= 1:
+            q = mexp(-t)
+            return jtheta(3, 0, q) ** (4 - h) * jtheta(4, 0, q) ** h - 1
+        # theta_3(e^-t) = sqrt(pi/t) theta_3(e^{-pi^2/t});
+        # theta_4(e^-t) = sqrt(pi/t) theta_2(e^{-pi^2/t})
+        Q = mexp(-mpi * mpi / t)
+        pref = (mpi / t) ** 2
+        return pref * jtheta(3, 0, Q) ** (4 - h) * jtheta(2, 0, Q) ** h - 1
+    return mquad(f, [0, 1, minf])
+
+_closed = [None, mpi / 2 - mlog(2), -2 * mlog(2), -mpi / 2 - mlog(2),
+           -4 * mlog(2)]
+for _h in (1, 2, 3, 4):
+    _v = _Zh1(_h)
+    check(f"Z^({_h})(1) split-integral = closed form (25+ digits)",
+          abs(_v - _closed[_h]) < mpf('1e-25'),
+          f"diff = {mp.nstr(abs(_v - _closed[_h]), 5)}")
+
+# --- (c) mu_w closed forms and dominance ---
+_Z = [-8 * mlog(2)] + _closed[1:]
+def _Kraw(hh, ww):
+    return sum((-1) ** j * math.comb(ww, j) * math.comb(4 - ww, hh - j)
+               for j in range(0, hh + 1))
+_mu4pi2 = [sum(_Kraw(hh, ww) * _Z[hh] for hh in range(5)) for ww in range(5)]
+_mu_expect = [-32 * mlog(2), 2 * mpi - 4 * mlog(2), -8 * mlog(2),
+              -(2 * mpi + 4 * mlog(2)), -16 * mlog(2)]
+check("4pi^2 mu_w = (-32ln2, 2pi-4ln2, -8ln2, -(2pi+4ln2), -16ln2)",
+      all(abs(_mu4pi2[w] - _mu_expect[w]) < mpf('1e-30') for w in range(5)))
+check("dominance: 28 ln 2 > 2 pi (mu_0 dominates)",
+      28 * mlog(2) > 2 * mpi and
+      all(abs(_mu_expect[0]) > abs(_mu_expect[w]) for w in range(1, 5)))
+
+# --- (d) rho, tail, interval ---
+_rho = mlog(2) / mpi ** 4
+check("rho = ln2/pi^4 = 7.1158e-3 < 7.2e-3",
+      abs(_rho - mpf('7.1158e-3')) < mpf('1e-7') and _rho < mpf('7.2e-3'))
+_tail = _rho ** 2 / (1 - _rho)
+check("tail rho^2/(1-rho) = 5.10e-5 < 5.3e-5", _tail < mpf('5.3e-5'))
+_center = mpf('137.036015073880')
+check("closed-form interval inside printed [137.03596, 137.03607]",
+      _center - _tail > mpf('137.03596') and
+      _center + _tail < mpf('137.03607'))
+mp.dps = 30
 
 # ============================================================
 print()

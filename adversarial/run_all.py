@@ -1,7 +1,7 @@
 """
 Run every adversarial verifier in parallel and report a roll-up. Exits nonzero
-if any test fails. None of the verifiers takes alpha / 137 / CODATA as an input
-(CODATA appears only as an external end-comparison), so a green run is itself
+if any test fails. None of the verifiers takes alpha, 137, or CODATA as
+an input to any computed quantity, so a green run is itself
 evidence of target-blindness across the whole chain.
 
 Each verifier runs in its own process; a thread pool launches them and waits
