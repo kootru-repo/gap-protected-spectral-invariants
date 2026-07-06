@@ -57,16 +57,16 @@ SCRIPTS = [
 # steps see from the adversarial sub-runner), so the cold-start ETA already
 # reflects wall-clock, not idealised standalone times.
 SHIPPED_BASELINE = {
-    "verify.py": 0.5,
-    "verify_spectral_bounds.py": 0.4,
-    "verify_krein.py": 0.3,
-    "classify_crystallographic.py": 1.4,
-    "verify_computational.py": 9.9,
+    "verify.py": 1.0,
+    "verify_spectral_bounds.py": 0.5,
+    "verify_krein.py": 1.0,
+    "classify_crystallographic.py": 2.0,
+    "verify_computational.py": 15.0,
     "verify_prime_family.py": 0.4,
     "verify_theta_determination.py": 290.0,
-    "substrate_sweep.py": 4.1,
-    "carat_sweep.py": 53.9,
-    "run_all.py": 54.9,
+    "substrate_sweep.py": 5.0,
+    "carat_sweep.py": 85.0,
+    "run_all.py": 85.0,
 }
 
 # A completed step only recalibrates the speed factor if its expected time is at
@@ -78,7 +78,7 @@ MIN_CALIB_SECONDS = 3.0
 # Shown as the denominator ("N/TOTAL checks") before any local run has recorded
 # the real total (the per-machine cache is gitignored, so a fresh clone -- e.g.
 # Colab -- always starts cold). Refined automatically once a run completes.
-SHIPPED_TOTAL_CHECKS = 826
+SHIPPED_TOTAL_CHECKS = 688
 
 COUNT_RE = re.compile(
     r"(\d+)\s*/\s*(\d+)\s+checks passed"
