@@ -15,7 +15,8 @@ first principles: exact lattice enumeration, closed forms, high-precision
 `mpmath`, cyclotomic roots, and an exhaustive crystallographic sweep. Among
 the verified results: the mode count `N_4(5) = 137 = 1 + 8 + 128`, the
 dimensional rigidity `2d = 2^{d-1}` (unique at `d = 4`), the spectral
-radius `rho < 7.2e-3`, the `K*(d)` saturation thresholds for `d = 2..8`,
+radius `rho = ln 2/pi^4` in closed form, the `K*(d)` saturation
+thresholds for `d = 2..8`,
 the prime-family classification (alignment `d = p^(d-2)`, solutions
 `(2,4)` and `(3,3)`), and the determinant-16 enumeration behind the
 spectral-determination theorem.
@@ -90,7 +91,7 @@ clean. Force the rich view anywhere with `VERIFY_RICH=1`.
 |---|---|
 | `verify.py` | Mode counts `r_4(k)`, `N_4(5)=137=1+8+128`, the Gram cascade, `K*=5` |
 | `verify_spectral_bounds.py` | Spectral radius `rho < 7.2e-3`, the operator-norm interval, and the `K*(d)` saturation dictionary |
-| `verify_krein.py` | Krawtchouk eigenvalues `mu_w` and the exact theta identities |
+| `verify_krein.py` | The closed-form spectral radius `rho = ln 2/pi^4` (theta-coefficient certificate) and the Krawtchouk kernel eigenvalues `mu_w` |
 | `classify_crystallographic.py` | Kissing numbers and the integrality-boundary lattices |
 | `verify_computational.py` | Gram ranks, shell counts, dynamical eigenvalues |
 | `verify_prime_family.py` | Prime-family classification: alignment `d = p^(d-2)`, solutions `(2,4)` and `(3,3)` |

@@ -8,11 +8,11 @@ Provenance pin: github.com/lbfm-rwth/carat, commit
 retrieved 2026-06-04. The dim-4 qcatalog subset is bundled under
 substrate-sweep/carat/ (GPL-2; see carat/NOTICE.txt), so the sweep
 runs offline as shipped.
-One file per Z-class representative (227 of them), each holding the generating
+One file per class representative (227 of them), each holding the generating
 matrices of a finite subgroup of GL(4,Z) in the standard integral basis. These
-227 Z-classes are the complete list of conjugacy classes of finite subgroups of
-GL(4,Z) (Brown-Bulow-Neubuser-Wondratschek-Zassenhaus 1978, as distributed in
-CARAT). Every 4D crystallographic point group is conjugate into one of them, so
+227 classes are the geometric crystal classes (Q-classes): the complete list
+of finite subgroups of GL(4,Z) up to conjugacy in GL(4,Q)
+(Brown-Bulow-Neubuser-Wondratschek-Zassenhaus 1978, as distributed in CARAT). Every 4D crystallographic point group is conjugate into one of them, so
 sweeping each catalogue group together with its subgroups is exhaustive.
 
 For each catalogue group G we:

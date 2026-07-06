@@ -8,7 +8,7 @@ summand is free.
 
   b_0 = 1                 (zeroth Betti number)
   chi_orb = 8             (orbifold Euler characteristic)
-  |Fix| * chi_orb = 128   (fixed-point count times Euler char; the K-theory sector)
+  |Fix| * chi_orb = 128   (fixed-point count times Euler char; the dynamical sector)
 
 These total 137, which is N_4(5) computed separately by Jacobi. That topology
 total = number-theory total is the bridge, and it is not tunable.

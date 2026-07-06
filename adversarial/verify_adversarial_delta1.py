@@ -2,8 +2,10 @@
 Test 03 - geometric completion Delta_1 = F_0 + gammaE/2 = 0.0360151.
 Folds in Test 06 (Phi(s) coefficients) and Test 07 (zeta_orb(0) = -1/2).
 
-The 2x2 candidate grid {0.036, 0.162, 0.325, 0.451} is selected by the Neumann
-convergence bound, target-blind (no alpha/137/CODATA). We check: the grid is
+The 2x2 candidate grid {0.036, 0.162, 0.325, 0.451} is selected by the
+operator consistency bound (every candidate's Neumann series converges;
+the bound is a consistency criterion, not a convergence one), target-blind
+(no alpha/137/CODATA). We check: the grid is
 COMPLETE (15 twisted L-functions excluded by self-duality), the threshold is
 built only from lattice quantities, the winner is well-separated from the next
 loser, and the kernel coefficients (|G|=2, gamma factor, gammaE, zeta_orb(0))
@@ -86,7 +88,7 @@ for k, d1 in grid.items():
     passes[k] = d2 < thr
 check("threshold rho^2/(1-rho) ~ 5.1e-5 (lattice-only, no alpha)",
       math.isclose(thr, 5.1e-5, rel_tol=0.1), "thr=%.2e" % thr)
-check("only the (1,1/2) candidate passes the Neumann bound",
+check("only the (1,1/2) candidate passes the consistency bound",
       passes["(1,1/2)"] and not any(passes[k] for k in passes if k != "(1,1/2)"))
 # well-separated, not knife-edge: winner 0.036, next loser 0.162
 check("clean gap: winner 0.036 vs next loser 0.162 (factor ~4.5)",
