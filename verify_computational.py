@@ -389,8 +389,11 @@ def main():
 
     # Independent mu_2 verification: K_2 annihilation
     # Krawtchouk K_2 = [1, 0, -2, 0, 1] applied to character sums gives
-    # the w=2 eigenvalue. For the off-diagonal (h=1..4 only) Green's function,
-    # the exact result is mu_2 = -1/(4000*pi).
+    # the w=2 eigenvalue. For the off-diagonal (h=1..4 only) Green's
+    # function the exact value is mu_2 = -2*G^(2) + G^(4) = 0 (THEOREM,
+    # theta3*theta4 = theta4(q^2)^2; checked in verify_krein.py and
+    # verify_spectral_bounds.py). The retired expected value -1/(4000*pi)
+    # was a quadrature-cutoff artifact of the old numerical check.
     # K_h(w=2; 4) for h=0..4 gives the Krawtchouk coefficients for sector w=2
     K_at_w2 = [krawtchouk_poly(h, 2, 4) for h in range(5)]
     check(f"[K_h(2;4)] = {K_at_w2} (annihilates h=1,3)",

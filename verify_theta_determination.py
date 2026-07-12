@@ -15,6 +15,9 @@
 #   (iii) 833 presentations with the ascending-diagonal condition dropped;
 #   (iv)  the unique theta survivor through norm 40 is 2*I_4 (and every
 #         other candidate already fails at the first coefficient, r(2)=12);
+#   (v)   exactly two representation-number sequences through norm 40 occur
+#         among the 161 candidates: that of 2*I_4 (its unique survivor) and
+#         that of A_3+<4> (all 160 others);
 # plus controls: Jacobi r(2k) = 8*sigmatilde(k), equality detection on
 # unimodular re-presentations, the non-integral impostors A_2+Z+Z(m) of the
 # integrality-boundary remark, and the quotient-multiplicity halving
@@ -158,6 +161,20 @@ kiss_others = [min_vector_reps(G)[1] for G in cands16 if G not in surv]
 check("C5 every other candidate has kissing number 12 (fails at r(2))",
       all(k == 12 for k in kiss_others))
 
+A34 = ((2, -1, 0, 0), (-1, 2, -1, 0), (0, -1, 2, 0), (0, 0, 0, 4))
+seq = lambda c: tuple(c.get(n, 0) for n in range(1, NORM_CAP + 1))
+seqs = {}
+for G in cands16:
+    seqs.setdefault(seq(theta_counts(G, NORM_CAP)), []).append(G)
+check("C5b exactly two norm-sequences through 40 among the 161",
+      len(seqs) == 2, len(seqs))
+t2I4 = seq(theta_counts(G0, NORM_CAP))
+tA34 = seq(theta_counts(A34, NORM_CAP))
+check("C5c the sequences are those of 2*I_4 (1 form) and A_3+<4> (160)",
+      set(seqs) == {t2I4, tA34}
+      and len(seqs.get(t2I4, [])) == 1
+      and len(seqs.get(tA34, [])) == 160)
+
 # ------------------------------------------------ (iii) ordering dropped
 cands12u = sweep(12, ordered=False)
 surv_u = [G for G in cands12u if matches(theta_counts(G, NORM_CAP), TARGET)]
@@ -283,5 +300,5 @@ print("SUMMARY: %d pass, %d fail" % (len(PASS), len(FAIL)))
 if FAIL:
     print("FAILED: " + ", ".join(FAIL))
     sys.exit(1)
-print("RESULT: ALL CHECKS PASS (15/15)")
+print("RESULT: ALL CHECKS PASS (%d/%d)" % (len(PASS), len(PASS)))
 sys.exit(0)

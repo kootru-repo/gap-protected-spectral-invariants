@@ -515,6 +515,11 @@ Delta1_orbifold = F_0 / 2 + gamma_E / 2
 check(f"All-orbifold: F_0/2 + gamma_E/2 = {Delta1_orbifold:.4f}",
       abs(Delta1_orbifold - 0.1623) < 0.001)
 
+# Mixed: F_0/2 + gamma_E (orbifold Mellin term, covering defect)
+Delta1_mixed = F_0 / 2 + gamma_E
+check(f"Mixed: F_0/2 + gamma_E = {Delta1_mixed:.4f}",
+      abs(Delta1_mixed - 0.4509) < 0.001)
+
 # Selection (prop:delta1-unique): each candidate's leading second-order
 # coefficient is Delta_1^2/(8 pi^2) (operator coincident-point propagator
 # G_0 = 1/8pi^2, eq:tube). Only the smallest-Delta_1 completion clears the
@@ -529,6 +534,9 @@ check(f"All-covering: Delta_1^2/8pi^2 = {D2lead_covering:.2e} >> rho^2 (factor {
       D2lead_covering > rho_sq)
 check(f"All-orbifold: Delta_1^2/8pi^2 = {D2lead_orbifold:.2e} >> rho^2 (factor {D2lead_orbifold/rho_sq:.0f}x)",
       D2lead_orbifold > rho_sq)
+D2lead_mixed = Delta1_mixed**2 / (8 * math.pi**2)
+check(f"Mixed: Delta_1^2/8pi^2 = {D2lead_mixed:.2e} >> rho^2 (factor {D2lead_mixed/rho_sq:.0f}x)",
+      D2lead_mixed > rho_sq)
 
 # Smooth-manifold limit: |G|=1 recovers F_0 + gamma_E (no orbifold halving)
 Delta1_smooth = F_0 + gamma_E
