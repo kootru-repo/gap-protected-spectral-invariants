@@ -78,12 +78,13 @@ MIN_CALIB_SECONDS = 3.0
 # Shown as the denominator ("N/TOTAL checks") before any local run has recorded
 # the real total (the per-machine cache is gitignored, so a fresh clone -- e.g.
 # Colab -- always starts cold). Refined automatically once a run completes.
-SHIPPED_TOTAL_CHECKS = 688
+SHIPPED_TOTAL_CHECKS = 708
 
 COUNT_RE = re.compile(
     r"(\d+)\s*/\s*(\d+)\s+checks passed"
     r"|RESULTS?:\s*(\d+)\s+passed"
     r"|(\d+)\s+passed,\s*\d+\s+failed"
+    r"|SUMMARY:\s*(\d+)\s+pass,"
     r"|TOTAL:\s*(\d+)/(\d+)"
 )
 

@@ -130,13 +130,16 @@ print()
 # ---------------------------------------------------------------------------
 max_chi_ge3 = max((chi for n, chi, S in rows if n >= 3), default=0.0)
 unique = (len(chi8) == 1 and chi8[0] == frozenset({ID, NEG_I}))
+chi_values = sorted({round(chi, 9) for n, chi, S in rows})
 print("RESULT")
 print("-" * 60)
 print("subgroups with chi_orb = 8 (three-sector value):", len(chi8))
 print("the unique one is {I, -I} = Z_2:", unique)
-print("max chi_orb over |G| >= 3 fixed-point-free subgroups: %.4f (< 8)" % max_chi_ge3)
+print("complete set of chi_orb values over non-trivial subgroups: %s" % chi_values)
+print("max chi_orb over |G| >= 3 fixed-point-free subgroups: %.4f (<= 6)" % max_chi_ge3)
 print("=> on Z^4, G = Z_2 = {I,-I} is the UNIQUE substrate (exhaustive over W(B_4));")
 print("   all |G|>=3 isolated-fixed-point subgroups have chi_orb < 8.")
 print("   (Other lattices excluded analytically by r_Lambda(1)=8 => Lambda=Z^4.)")
 import sys
-sys.exit(0 if unique and max_chi_ge3 < 8 else 1)
+sys.exit(0 if unique and max_chi_ge3 <= 6 + 1e-9
+         and chi_values == [4, 5, 6, 8] else 1)

@@ -262,6 +262,9 @@ if os.path.isfile(carat_py) and os.path.isdir(carat_data):
           "EVERY chi_orb=8 isolated subgroup is Z_2 = {I,-I}: True" in out)
     check("carat_sweep: group orders self-checked against CARAT (226 matched)",
           "matched CARAT order: 226" in out, "self-test of the parse")
+    check("carat_sweep: chi_orb <= 6 certified over all |S| >= 3 subgroups "
+          "of the 227-class catalogue",
+          "bound chi_orb <= 6 holds: True" in out)
 else:
     print("NOTE: CARAT data not present (clone github.com/lbfm-rwth/carat into "
           "substrate-sweep/carat); skipping black-box checks (4). The independent "

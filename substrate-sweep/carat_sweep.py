@@ -154,6 +154,7 @@ files = catalogue_files()
 print("CARAT qcatalog dim-4 generator files:", len(files))
 
 chi8 = []                       # (file, |S|, is Z2={I,-I}?)
+chi_ge3 = {}                    # chi value -> example (file, |S|), over |S| >= 3
 parsed = verified = 0
 maxord = 0
 for path in files:
@@ -191,6 +192,10 @@ for path in files:
         chi = sum(abs(det_I_minus(g)) for g in S if g != I4) / len(S)
         if abs(chi - 8) < 1e-9:
             chi8.append((name, len(S), len(S) == 2 and NEG_I4 in S))
+        if len(S) >= 3:
+            key = round(chi, 9)
+            if key not in chi_ge3:
+                chi_ge3[key] = (name, len(S))
 
 # NOTE: the 227th catalogue file is the trivial group (order 1, no order line), so
 # 226 matched = 226/226 non-trivial, not a parse defect.
@@ -209,6 +214,16 @@ for name, n, is_z2 in chi8:
         all_z2 = False
 
 print()
+print("chi_orb values over isolated-fixed-point subgroups with |S| >= 3:")
+for v in sorted(chi_ge3):
+    ex_name, ex_n = chi_ge3[v]
+    print("  chi_orb = %g   (e.g. |S|=%d inside catalogue group '%s')"
+          % (v, ex_n, ex_name))
+max_chi_ge3 = max(chi_ge3) if chi_ge3 else 0.0
+print("max chi_orb over |S| >= 3: %g ; bound chi_orb <= 6 holds: %s"
+      % (max_chi_ge3, max_chi_ge3 <= 6 + 1e-9))
+
+print()
 print("RESULT")
 print("-" * 64)
 print("chi_orb=8 isolated subgroups found: %d (Z_2={I,-I} recurs across the"
@@ -221,4 +236,5 @@ print("   uniqueness r_Lambda(1)=8 => Lambda=Z^4, the substrate T^4/Z_2 on Z^4")
 print("   is the unique survivor. (Genuine CARAT-catalogue sweep.)")
 import sys
 if __name__ == "__main__":
-    sys.exit(0 if all_z2 and chi8 and parsed >= 200 else 1)
+    sys.exit(0 if all_z2 and chi8 and parsed >= 200
+             and chi_ge3 and max_chi_ge3 <= 6 + 1e-9 else 1)

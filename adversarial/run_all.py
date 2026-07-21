@@ -17,7 +17,13 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 here = os.path.dirname(os.path.abspath(__file__))
-tests = sorted(glob.glob(os.path.join(here, "verify_adversarial_*.py")))
+tests = sorted(
+    glob.glob(os.path.join(here, "verify_adversarial_*.py"))
+    + [os.path.join(here, name) for name in
+       ("verify_substrate_d5plus.py",
+        "verify_substrate_noncyclic.py",
+        "verify_integrality_boundary.py")]
+)
 
 
 def run_one(t):
