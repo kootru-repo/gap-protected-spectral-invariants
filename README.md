@@ -122,3 +122,7 @@ The verification code is released under the MIT License (see `LICENSE`). The
 `substrate-sweep/carat/` subtree is a subset of the CARAT catalogue
 (github.com/lbfm-rwth/carat, commit 65619d6), redistributed under the GNU
 GPL v2; see `substrate-sweep/carat/LICENSE` and `substrate-sweep/carat/NOTICE.txt`.
+
+---
+
+<sub>A [Kootru Labs](https://kootru.com) project.</sub>
